@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "976256672521",
+    "project_id": "modernlibraryusingfirebase",
+    "storage_bucket": "modernlibraryusingfirebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976256672521:android:01c97e8ed14b6568e569d8",
+        "android_client_info": {
+          "package_name": "com.nandan.modernlibraryusingfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976256672521-s22dtmc60gtrgj5so1q7qa4u2hprcct3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWlcWc40CfGkyh5u2RJbuBIoyokEuXCsE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976256672521-s22dtmc60gtrgj5so1q7qa4u2hprcct3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
