@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
        // dbRef.setValue("Nandan");
 
 
-             print("Hello world");
+             System.out.print("Hello world");
 
     }
 }
