@@ -1,9 +1,9 @@
 package com.nandan.modernlibraryusingfirebase;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -11,10 +11,16 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainActivity extends AppCompatActivity {
     //FirebaseDatabase  database;
     //DatabaseReference dbRef;
+  private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
 
         //database= FirebaseDatabase.getInstance();
        // dbRef=database.getReference("Student");
@@ -24,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
        // dbRef.setValue("Nandan");
 
 
-             System.out.print("Hello world");
+            
 
     }
 }
