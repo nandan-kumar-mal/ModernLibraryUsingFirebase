@@ -10,13 +10,7 @@
     tools:openDrawer="start"
     >
 
-    <com.google.android.material.navigation.NavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav_view"
-        app:headerLayout="@layout/header"
-        app:menu="@menu/main_menu"
-        android:layout_gravity = "start"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,6 +33,7 @@
         tools:layout_editor_absoluteX="-16dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardTrans"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -72,6 +67,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardBooklist"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -114,6 +110,7 @@
         tools:layout_editor_absoluteX="0dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardAdd"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -147,6 +144,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardAbout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
@@ -181,5 +179,12 @@
     </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 />
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/nav_view"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/main_menu"
+        android:layout_gravity = "start"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
