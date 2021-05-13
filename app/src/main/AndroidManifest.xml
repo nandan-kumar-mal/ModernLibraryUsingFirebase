@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ModernLibraryUsingFirebase">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".About_us"></activity>
+        <activity android:name=".BookAdd" />
+        <activity android:name=".Booklist" />
+        <activity android:name=".TransactionsActivity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
         <activity android:name=".activity_start">
