@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         naviView.setNavigationItemSelectedListener(this);
+        toggle.setToolbarNavigationClickListener(this);
+
 
 
 
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             
 
     }
+    
 
     @Override
     public void onBackPressed() {
