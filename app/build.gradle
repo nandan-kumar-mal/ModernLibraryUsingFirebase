@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.nandan.modernlibraryusingfirebase"
-        minSdkVersion 16
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -39,6 +39,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:18.0.2'
     implementation 'com.google.firebase:firebase-auth:20.0.3'
     implementation 'com.google.firebase:firebase-database:19.7.0'
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+    implementation 'com.karumi:dexter:6.2.2'
     //noinspection GradleCompatible
 
     testImplementation 'junit:junit:4.+'
