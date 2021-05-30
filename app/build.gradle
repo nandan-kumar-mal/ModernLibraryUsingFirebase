@@ -9,7 +9,9 @@ android {
 
     defaultConfig {
         applicationId "com.nandan.modernlibraryusingfirebase"
-        minSdkVersion 23
+
+        minSdkVersion 23      
+
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -32,7 +34,6 @@ android {
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
-
 
 
     implementation 'com.karumi:dexter:6.2.2'
