@@ -24,13 +24,14 @@ import com.karumi.dexter.listener.single.PermissionListener;
 public class TransactionsActivity extends AppCompatActivity {
     CodeScanner codeScan;
     CodeScannerView scanView;
-    TextView  resultData;
+    TextView resultData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions);
         scanView = findViewById(R.id.scannerView);
-        codeScan = new CodeScanner(this,scanView);
+        codeScan = new CodeScanner(this, scanView);
         resultData = findViewById(R.id.resultsOfQr);
 
         codeScan.setDecodeCallback(new DecodeCallback() {
@@ -39,7 +40,7 @@ public class TransactionsActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                         resultData.setText(result.getText());
+                        resultData.setText(result.getText());
                     }
                 });
             }
@@ -79,5 +80,7 @@ public class TransactionsActivity extends AppCompatActivity {
 
         }).check();
     }
+
+}
 
 

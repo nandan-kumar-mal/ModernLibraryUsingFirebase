@@ -31,6 +31,7 @@ public class Booklist extends AppCompatActivity {
         obj1.setImgname(R.drawable.book138);
         holder.add(obj1);
 
+
         Model obj2 = new Model();
         obj2.setTitle("Semester II");
         obj2.setDesc("All the books needed in this semester");

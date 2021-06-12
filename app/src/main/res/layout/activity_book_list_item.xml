@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5dp"
+    app:cardCornerRadius="10dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/bookImg"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            tools:src="@mipmap/ic_launcher"
+            android:layout_marginRight="10dp"/>
+
+        <TextView
+            android:id="@+id/booktitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/bookImg"
+            tools:text="This is the Book Title" />
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="By Author"
+            android:layout_toRightOf="@id/bookImg"
+            android:layout_below="@+id/booktitle"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+
+            />
+        <TextView
+            android:id="@+id/available"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Availability: "
+            android:layout_toRightOf="@id/bookImg"
+            android:layout_below="@+id/author"
+            android:layout_marginTop="8dp"
+            android:textSize="16sp"
+
+            />
+        <TextView
+            android:id="@+id/availability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/available"
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@id/available"
+            tools:text="Yes"
+            />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
