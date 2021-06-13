@@ -1,5 +1,6 @@
 package com.nandan.modernlibraryusingfirebase;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,17 +10,23 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 
-public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHolder> {
+public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHolder>  {
     ArrayList<Model> data;
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    Context context;
+
+
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imgView;
         private TextView txtView , txtView2;
-        private RelativeLayout parent;
+        private CardView parent;
+        private ItemClickListener itemClickListener;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -27,13 +34,23 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
             txtView = itemView.findViewById(R.id.txtView);
             txtView2 = itemView.findViewById(R.id.txtView2);
             parent = itemView.findViewById(R.id.parent);
+            itemView.setOnClickListener(this);
 
 
         }
+
+        @Override
+        public void onClick(View v) {
+            this.itemClickListener.onItemClick(v, getLayoutPosition());
+        }
+        public void setItemClickListener(ItemClickListener ic){
+            this.itemClickListener = ic;
+        }
     }
 
-    public BookListAdapter(ArrayList<Model> data, c) {
+    public BookListAdapter(ArrayList<Model> data , Context c) {
         this.data = data;
+        this.context = c;
     }
 
     @NonNull
@@ -49,12 +66,12 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         holder.txtView.setText(data.get(position).getTitle());
         holder.txtView2.setText(data.get(position).getDesc());
         holder.imgView.setImageResource(data.get(position).getImgname());
-        holder.parent.setOnClickListener(new View.OnClickListener() {
+        holder.setItemClickListener(new ItemClickListener() {
             @Override
-            public void onClick(View v) {
-                if(v.getContext()== data.get(position)) {
-
-                }
+            public void onItemClick(View v, int position) {
+                if(data.get(position).getTitle().equals("Semester I"));
+                Intent sem1 = new Intent(context, Semester_I_books.class);
+                context.startActivity(sem1);
             }
         });
 
