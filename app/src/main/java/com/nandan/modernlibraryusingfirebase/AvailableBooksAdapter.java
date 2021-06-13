@@ -37,12 +37,12 @@ public class AvailableBooksAdapter extends RecyclerView.Adapter<AvailableBooksAd
         holder.txtBookName.setText(contacts.get(position).getTitle());
         holder.txtAuthor.setText(contacts.get(position).getAuthor());
         holder.txtAvailabitilty.setText(contacts.get(position).getAvailability().toString());
-        //holder.parent2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(context, contacts.get(position).getTitle() + " Selected", Toast.LENGTH_SHORT).show();
-//            }
- //       });
+        holder.parent2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, contacts.get(position).getTitle() + " Selected", Toast.LENGTH_SHORT).show();
+            }
+       });
         Glide.with(context)
                 .asBitmap()
                 .load(contacts.get(position).getImageUrl())
