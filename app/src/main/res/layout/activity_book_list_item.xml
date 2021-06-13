@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="5dp"
-    app:cardCornerRadius="10dp"
+    android:id="@+id/parent2"
+    android:elevation="8dp"
+    android:animateLayoutChanges="true"
+    app:cardCornerRadius="4dp"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -44,7 +46,7 @@
             android:id="@+id/available"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Availability: "
+            android:text="Availability: "
             android:layout_toRightOf="@id/bookImg"
             android:layout_below="@+id/author"
             android:layout_marginTop="8dp"

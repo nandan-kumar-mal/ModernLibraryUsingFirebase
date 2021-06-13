@@ -20,14 +20,14 @@ public class Semester_I_books extends AppCompatActivity {
         ArrayList<Contact> contacts = new ArrayList<>();
         contacts.add(new Contact("Programming in ANSI C", "E.Balagurusamy",true,"https://images-na.ssl-images-amazon.com/images/I/61jRrvKXV0L.jpg"));
         contacts.add(new Contact("Discrete Mathematics ", "Seymour Lipschulz and Marc lars Lipson",true,"https://images-na.ssl-images-amazon.com/images/I/71kohGylsyL.jpg"));
-        contacts.add(new Contact(":et us C", "Yashavant Kanetkar",true,"https://images-na.ssl-images-amazon.com/images/I/51H52tr3KHL.jpg"));
+        contacts.add(new Contact("Let us C", "Yashavant Kanetkar",true,"https://images-na.ssl-images-amazon.com/images/I/51H52tr3KHL.jpg"));
         contacts.add(new Contact("Programming with Java", "E.Balagurusamy",true,"https://www.textbooks.solutions/wp-content/archivos/2019/09/programming-with-java-e-balagurusamy-3e.jpg"));
         contacts.add(new Contact("Data Communications and Networking", "Behrouz A. Forouzan",true,"https://images-na.ssl-images-amazon.com/images/I/41LBD-XtzYL.jpg"));
         contacts.add(new Contact("Object Oriented Programming with C++", "E.Balagurusamy",true,"https://images-na.ssl-images-amazon.com/images/I/41F8dUDF2CL._SX258_BO1,204,203,200_.jpg"));
         contacts.add(new Contact("Object Oriented Programming with C++", "E.Balagurusamy",true,"https://images-na.ssl-images-amazon.com/images/I/41LBD-XtzYL.jpg"));
         contacts.add(new Contact("Object Oriented Programming with C++", "E.Balagurusamy",true,"https://images-na.ssl-images-amazon.com/images/I/41LBD-XtzYL.jpg"));
 
-        AvailableBooksAdapter adapter = new AvailableBooksAdapter();
+        AvailableBooksAdapter adapter = new AvailableBooksAdapter(this);
         adapter.setContact(contacts);
         contactRecView.setAdapter(adapter);
         contactRecView.setLayoutManager(new LinearLayoutManager(this));
