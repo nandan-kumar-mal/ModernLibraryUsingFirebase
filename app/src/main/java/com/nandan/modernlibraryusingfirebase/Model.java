@@ -1,7 +1,6 @@
 package com.nandan.modernlibraryusingfirebase;
 
-public class Model {
-    private String title;
+public class Model { private String title;
     private String desc;
     private int imgname;
 

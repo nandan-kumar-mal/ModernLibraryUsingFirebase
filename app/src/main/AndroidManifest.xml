@@ -7,8 +7,7 @@
     <uses-feature android:name="android.hardware.camera2.full" />
 
     <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +16,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ModernLibraryUsingFirebase">
-        <activity android:name=".Semester_I_books"></activity>
+        <activity android:name=".Misc_Books"></activity>
+        <activity android:name=".Semester_VI_books" />
+        <activity android:name=".Semester_V_books" />
+        <activity android:name=".Semester_IV_books" />
+        <activity android:name=".Semester_III_books" />
+        <activity android:name=".Semester_II_books" />
+        <activity android:name=".Semester_I_books" />
         <activity android:name=".TransactionsActivity" />
         <activity android:name=".About_us" />
         <activity android:name=".BookAdd" />

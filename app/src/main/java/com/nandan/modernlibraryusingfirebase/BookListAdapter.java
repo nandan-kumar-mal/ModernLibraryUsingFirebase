@@ -69,9 +69,40 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                if(data.get(position).getTitle().equals("Semester I"));
-                Intent sem1 = new Intent(context, Semester_I_books.class);
-                context.startActivity(sem1);
+                if(data.get(position).getTitle().equals("Semester I")) {
+                    Intent sem1 = new Intent(context, Semester_I_books.class);
+                    context.startActivity(sem1);
+                }
+
+                else if (data.get(position).getTitle().equals("Semester II")){
+                Intent sem2 = new Intent(context, Semester_II_books.class);
+                context.startActivity(sem2);
+                }
+
+                else if(data.get(position).getTitle().equals("Semester III")) {
+                    Intent sem3 = new Intent(context, Semester_III_books.class);
+                    context.startActivity(sem3);
+                }
+
+                else if(data.get(position).getTitle().equals("Semester IV")) {
+                    Intent sem4 = new Intent(context, Semester_IV_books.class);
+                    context.startActivity(sem4);
+                }
+
+                else if(data.get(position).getTitle().equals("Semester V")) {
+                    Intent sem5 = new Intent(context, Semester_V_books.class);
+                    context.startActivity(sem5);
+                }
+
+                else if(data.get(position).getTitle().equals("Semester VI")) {
+                    Intent sem6 = new Intent(context, Semester_VI_books.class);
+                    context.startActivity(sem6);
+                }
+
+                else if(data.get(position).getTitle().equals("Miscellaneous")){
+                Intent misc = new Intent(context, Misc_Books.class);
+                context.startActivity(misc);}
+
             }
         });
 
