@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ModernLibraryUsingFirebase">
-        <activity android:name=".Misc_Books"></activity>
+        <activity android:name=".BooksDetailsAdd"></activity>
+        <activity android:name=".Misc_Books" />
         <activity android:name=".Semester_VI_books" />
         <activity android:name=".Semester_V_books" />
         <activity android:name=".Semester_IV_books" />
