@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class AvailableBooksAdapter extends RecyclerView.Adapter<AvailableBooksAdapter.ViewHolder> {
     private Context context;
 
-    private ArrayList<Contact> contacts = new ArrayList<>();
+    private ArrayList<Contact> contacts ;
     public AvailableBooksAdapter(Context context) {
         this.context = context;
     }
