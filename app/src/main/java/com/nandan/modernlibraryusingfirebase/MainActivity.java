@@ -10,8 +10,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      private NavigationView naviView;
      private DrawerLayout drawer;
      private CardView cardTrans, cardAbout, cardAdd, cardBooklist;
-
+    private ImageView menuIcon;
 
 
     //FirebaseDatabase  database;
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        menuIcon = findViewById(R.id.navicon);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         naviView = findViewById(R.id.nav_view);
@@ -43,6 +45,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cardBooklist = findViewById(R.id.cardBooklist);
         cardAdd = findViewById(R.id.cardAdd);
         cardAbout = findViewById(R.id.cardAbout);
+
+        menuIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawer.openDrawer(GravityCompat.START);
+            }
+        });
         cardTrans.setOnClickListener(this);
         cardAbout.setOnClickListener(this);
         cardAdd.setOnClickListener(this);
