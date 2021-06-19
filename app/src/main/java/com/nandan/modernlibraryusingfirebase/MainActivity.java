@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -119,7 +120,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item)
+    {
+        switch(item.getItemId()){
+            case R.id.nav_home:
+                startActivity(new Intent(this,MainActivity.class));
+                break;
+
+            case R.id.nav_profile:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new ProfileFragment()).commit();
+                break;
+            case R.id.nav_noti:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new NotificationsFragment()).commit();
+                break;
+            case R.id.nav_logout:
+                Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_share:
+                Toast.makeText(this, "Shared", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.nav_rep:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new ReportFragment()).commit();
+                break;
+
+
+        }
         return true;
     }
 }
