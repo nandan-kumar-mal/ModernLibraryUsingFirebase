@@ -2,8 +2,11 @@
 package com.nandan.modernlibraryusingfirebase;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,8 @@ public class TransactionsActivity extends AppCompatActivity {
     CodeScanner codeScan;
     CodeScannerView scanView;
     TextView resultData;
+    Button btnBor, btnRetn;
+    ImageView imgClose;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +37,31 @@ public class TransactionsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_transactions);
         scanView = findViewById(R.id.scannerView);
         codeScan = new CodeScanner(this, scanView);
-        resultData = findViewById(R.id.resultsOfQr);
+        resultData = findViewById(R.id.txtResult);
+        btnBor = findViewById(R.id.btnBorrow);
+        btnRetn = findViewById(R.id.btnReturn);
+        imgClose = findViewById(R.id.imgclose);
+        imgClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resultData.setText("Title");
+
+            }
+        });
+
+        btnBor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TransactionsActivity.this, BorrowABook.class));
+            }
+        });
+
+        btnRetn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(TransactionsActivity.this, ReturnABook.class));
+            }
+        });
 
         codeScan.setDecodeCallback(new DecodeCallback() {
             @Override
