@@ -16,6 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.budiyev.android.codescanner.CodeScanner;
 import com.budiyev.android.codescanner.CodeScannerView;
 import com.budiyev.android.codescanner.DecodeCallback;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.Result;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -52,7 +58,41 @@ public class TransactionsActivity extends AppCompatActivity {
         btnBor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TransactionsActivity.this, BorrowABook.class));
+                String title = resultData.getText().toString();
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
+
+                Query checkBook = reference.orderByChild("title").equalTo(title);
+                checkBook.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            String author = snapshot.child(title).child("author").getValue(String.class);
+                            String category = snapshot.child(title).child("category").getValue(String.class);
+                            String edition = snapshot.child(title).child("edition").getValue(String.class);
+
+                            Intent intent = new Intent(getApplicationContext(), BorrowABook.class);
+                            intent.putExtra("title", title);
+                            intent.putExtra("author", author);
+                            intent.putExtra("edition", edition);
+                            intent.putExtra("category", category);
+                            startActivity(intent);
+
+                        }
+                        else{
+                            Toast.makeText(TransactionsActivity.this, "Book is not available", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(TransactionsActivity.this, "Book is not available", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+
+
             }
         });
 

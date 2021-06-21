@@ -18,9 +18,6 @@ import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
      private Toolbar toolbar;
@@ -66,13 +63,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-
-        //database= FirebaseDatabase.getInstance();
-       // dbRef=database.getReference("Student");
-
-        FirebaseDatabase.getInstance().getReference().child("Teachers").child("Com_Science").push().setValue("Dr. Mema");
-
-       // dbRef.setValue("Nandan");
 
 
             
