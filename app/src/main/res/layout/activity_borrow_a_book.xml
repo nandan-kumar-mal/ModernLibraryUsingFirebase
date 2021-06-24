@@ -146,11 +146,108 @@
                     android:id="@+id/Student_Detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:layout_marginLeft="20dp"
                     android:fontFamily="@font/aclonica"
                     android:text="Student Details"
                     android:textSize="20sp"
                     android:layout_marginTop="10dp"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/actv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/Student_Detail"
+                    android:layout_marginTop="10dp"
+                    android:hint="Select Student Roll No."
+                    android:completionThreshold="1"
+                    />
+                <TextView
+                    android:id="@+id/txt_anchor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Student's Roll Nos"
+                    android:layout_below="@+id/actv"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingBottom="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/txtStu_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_anchor"
+                    android:text="Name"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/txt_Roll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtStu_name"
+                    android:text="Roll No."
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/txtYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_Roll"
+                    android:text="Year"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_anchor"
+                    android:layout_toRightOf="@+id/txtStu_name"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="68dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/RollNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Name"
+                    android:layout_toRightOf="@+id/txt_Roll"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/Year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/RollNo"
+                    android:layout_toRightOf="@+id/txt_Roll"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Finish"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    />
+
 
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
