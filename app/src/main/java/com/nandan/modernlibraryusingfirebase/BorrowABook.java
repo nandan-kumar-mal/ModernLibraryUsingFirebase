@@ -1,10 +1,10 @@
 package com.nandan.modernlibraryusingfirebase;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class BorrowABook extends AppCompatActivity {
 
@@ -16,10 +16,10 @@ public class BorrowABook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrow_a_book);
 
-        txttitle = findViewById(R.id.txt_title);
-        txtauthor = findViewById(R.id.txt_Author);
-        txtcategory = findViewById(R.id.txt_Cat);
-        txtedition = findViewById(R.id.txt_Edition);
+        txttitle = findViewById(R.id.Title);
+        txtauthor = findViewById(R.id.Author);
+        txtcategory = findViewById(R.id.Categ);
+        txtedition = findViewById(R.id.Edition);
 
         showBookDetails();
 

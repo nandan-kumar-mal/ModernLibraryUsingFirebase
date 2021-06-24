@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class activity_start extends AppCompatActivity {
+public class activity_welcome extends AppCompatActivity {
 
     private Button register;
     private Button login;
@@ -25,7 +25,7 @@ public class activity_start extends AppCompatActivity {
        register.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               startActivity(new Intent(activity_start.this,Register.class));
+               startActivity(new Intent(activity_welcome.this,Register.class));
                finish();
            }
        });
@@ -33,7 +33,7 @@ public class activity_start extends AppCompatActivity {
        login.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               startActivity(new Intent(activity_start.this,Login.class));
+               startActivity(new Intent(activity_welcome.this,Login.class));
                finish();
            }
        });
