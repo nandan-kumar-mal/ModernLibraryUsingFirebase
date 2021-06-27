@@ -16,6 +16,13 @@
         android:padding="24dp"
         android:paddingTop="16dp">
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:src = "@drawable/ic_baseline_arrow_back_24"
+            android:backgroundTint="@color/white"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,20 +40,16 @@
            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email id"
-
             app:boxStrokeWidthFocused="1dp"
             app:boxStrokeColor="@color/black"
             android:textColorHint="@color/black"
-
-
-
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/iEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Email id"
                 android:inputType="text"
                 android:maxLines="1"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -56,7 +59,6 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Password"
             android:layout_marginTop="6dp"
             app:errorEnabled="true"
             android:textColorHint="@color/black"
@@ -71,6 +73,7 @@
                 android:id="@+id/iPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Password"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
