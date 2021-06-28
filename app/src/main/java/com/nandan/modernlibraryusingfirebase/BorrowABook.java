@@ -1,14 +1,32 @@
 package com.nandan.modernlibraryusingfirebase;
 
+
+import androidx.annotation.NonNull;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class BorrowABook extends AppCompatActivity {
 
     private TextView txttitle, txtauthor, txtcategory, txtedition;
+    private AutoCompleteTextView acedtxtRollNo;
+    private List<String> studentsroll;
+    private DatabaseReference mref;
 
     
     @Override
@@ -16,12 +34,39 @@ public class BorrowABook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_borrow_a_book);
 
+
         txttitle = findViewById(R.id.Title);
         txtauthor = findViewById(R.id.Author);
         txtcategory = findViewById(R.id.Categ);
         txtedition = findViewById(R.id.Edition);
 
+
+        
+        acedtxtRollNo = findViewById(R.id.actv);
+        studentsroll = new ArrayList<String>();
+
         showBookDetails();
+        mref = FirebaseDatabase.getInstance().getReference();
+        mref.child("Students").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot rollSnapshot: snapshot.getChildren()){
+                    String roll_no = rollSnapshot.child("Roll No").getValue(String.class);
+                    studentsroll.add(roll_no);
+                    ArrayAdapter<String> studentsAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, studentsroll);
+                    acedtxtRollNo.setAdapter(studentsAdapter);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(BorrowABook.this, "Unsuccessful Data Loading", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+
 
     }
 
