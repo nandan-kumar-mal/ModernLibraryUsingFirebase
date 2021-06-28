@@ -142,6 +142,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/student_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -154,7 +155,7 @@
                     android:id="@+id/actv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/Student_Detail"
+                    android:layout_below="@+id/student_details"
                     android:layout_marginTop="10dp"
                     android:hint="Select Student Roll No."
                     android:completionThreshold="1"
