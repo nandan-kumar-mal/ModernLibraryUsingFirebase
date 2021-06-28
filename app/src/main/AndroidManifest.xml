@@ -40,7 +40,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
-        <activity android:name=".activity_start" />
+        <activity android:name=".activity_welcome" />
 
         <meta-data
             android:name="preloaded_fonts"

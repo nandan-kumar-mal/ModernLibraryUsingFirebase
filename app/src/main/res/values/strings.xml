@@ -2,8 +2,12 @@
     <string name="app_name">ModernLibraryUsingFirebase</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="scan">Scan</string>
-    <string name="textview">TextView</string>
 
-
+    <string-array name="Class">
+        <item>HS 1st Year</item>
+        <item>HS 2nd Year</item>
+        <item>TDC 1st Year</item>
+        <item>TDC 2nd Year</item>
+        <item>TDC 3rd Year</item>
+    </string-array>
 </resources>
