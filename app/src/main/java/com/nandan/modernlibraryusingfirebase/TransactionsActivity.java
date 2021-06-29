@@ -65,7 +65,7 @@ public class TransactionsActivity extends AppCompatActivity {
                 checkBook.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(!snapshot.exists()){
+                        if(snapshot.exists()){
                             String author = snapshot.child(title).child("author").getValue(String.class);
                             String category = snapshot.child(title).child("category").getValue(String.class);
                             String edition = snapshot.child(title).child("edition").getValue(String.class);

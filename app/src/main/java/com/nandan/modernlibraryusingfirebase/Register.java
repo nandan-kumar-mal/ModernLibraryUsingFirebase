@@ -28,6 +28,8 @@ public class Register extends AppCompatActivity {
     private TextInputLayout password;
     private Button register;
     private FirebaseAuth fauth;
+    FirebaseDatabase rootNode;
+    DatabaseReference user_node ;
 
 
     private AutoCompleteTextView autoCompleteTextView;
@@ -56,9 +58,9 @@ public class Register extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!ValidateFullName()|!ValidateRollNo()|!ValidateEmail()|!ValidatePassword()){
+               /* if(!ValidateFullName()|!ValidateRollNo()|!ValidateEmail()|!ValidatePassword()){
                     return;
-                }
+                }*/
                 String txt_email = email.getEditText().getText().toString();
                 String txt_password = password.getEditText().getText().toString();
 
@@ -77,10 +79,9 @@ public class Register extends AppCompatActivity {
 
     public void storeUserData() {
 
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference user_node= rootNode.getReference();
+         rootNode=FirebaseDatabase.getInstance();
+         user_node=rootNode.getReference("User");
 
-        user_node.child("Users");
 
 
 
@@ -151,7 +152,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
-    private boolean ValidatePassword() {
+    /*private boolean ValidatePassword() {
         String val = password.getEditText().getText().toString().trim();
         String checkPassword = "^" +
                 "(?=.*[0-9])" +         //at least 1 digit
@@ -174,7 +175,7 @@ public class Register extends AppCompatActivity {
             return true;
 
         }
-    }
+    }*/
 
 
 }

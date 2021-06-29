@@ -44,6 +44,8 @@
             app:boxStrokeColor="@color/black"
             android:textColorHint="@color/black"
             app:hintTextColor="@color/black"
+            app:startIconDrawable="@drawable/ic_baseline_email_24"
+            app:startIconTint="@color/black"
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
