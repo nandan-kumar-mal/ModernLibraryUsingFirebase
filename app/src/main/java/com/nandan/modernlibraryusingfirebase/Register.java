@@ -32,11 +32,12 @@ public class Register extends AppCompatActivity {
     DatabaseReference user_node ;
 
 
+
     private AutoCompleteTextView autoCompleteTextView;
 
     public Register() {
     }
-
+    String txt_fullName,txt_rollNo,txt_Class,txt_email,txt_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +62,12 @@ public class Register extends AppCompatActivity {
                /* if(!ValidateFullName()|!ValidateRollNo()|!ValidateEmail()|!ValidatePassword()){
                     return;
                 }*/
-                String txt_email = email.getEditText().getText().toString();
-                String txt_password = password.getEditText().getText().toString();
+
+                 txt_fullName = fullName.getEditText().getText().toString();
+                 txt_rollNo = rollNo.getEditText().getText().toString();
+                 txt_Class = autoCompleteTextView.getText().toString();
+                 txt_email = email.getEditText().getText().toString();
+                 txt_password = password.getEditText().getText().toString();
 
                 if ((TextUtils.isEmpty(txt_email)) || (TextUtils.isEmpty(txt_password))) {
                     Toast.makeText(Register.this, "Empty Credentialls", Toast.LENGTH_LONG).show();
@@ -82,7 +87,8 @@ public class Register extends AppCompatActivity {
          rootNode=FirebaseDatabase.getInstance();
          user_node=rootNode.getReference("User");
 
-
+         UserHelperClass addNewUser = new UserHelperClass(txt_fullName,txt_rollNo,txt_Class,txt_email,txt_password);
+         user_node.child(txt_rollNo).setValue(addNewUser);
 
 
     }
