@@ -1,30 +1,48 @@
 package com.nandan.modernlibraryusingfirebase;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentResolver;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import org.jetbrains.annotations.NotNull;
 
 public class BooksDetailsAdd extends AppCompatActivity {
-
+    private static final int PICK_IMAGE_REQUEST = 1;
     private EditText edtxtAuth, edtxtCat, edtEd;
     private TextView txtBookName;
-    private Button btnFin;
+    private Button btnFin, btn_ChooseImg;
+    private ImageView imgview;
+    private Uri mImageUri;
+    private ProgressBar mprogressbar;
 
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,52 +52,109 @@ public class BooksDetailsAdd extends AppCompatActivity {
         edtxtAuth = findViewById(R.id.edtxtAuth);
         edtxtCat = findViewById(R.id.edtTxtCat);
         edtEd = findViewById(R.id.edtTxtEd);
+        mprogressbar = findViewById(R.id.progress_Bar);
 
         txtBookName = findViewById(R.id.txtBookName);
         btnFin = findViewById(R.id.btnFin);
+        btn_ChooseImg = findViewById(R.id.btn_Choose);
+        imgview = findViewById(R.id.iconimg);
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+        btn_ChooseImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openFileChooser();
+            }
+        });
 
         txtBookName.setText(getIntent().getStringExtra("title"));
         btnFin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txt_Author = edtxtAuth.getText().toString();
-                String txt_Cat = edtxtCat.getText().toString();
-                String txt_Edtion = edtEd.getText().toString();
 
+                uploadtoFirebase();
+            }
+    });
+    }
+    private void uploadtoFirebase() {
+        String txt_Author = edtxtAuth.getText().toString();
+        String txt_Cat = edtxtCat.getText().toString();
+        String txt_Edtion = edtEd.getText().toString();
 
-                if ((TextUtils.isEmpty(txt_Author))||(TextUtils.isEmpty(txt_Cat))||(TextUtils.isEmpty(txt_Edtion))){
-                    Toast.makeText(BooksDetailsAdd.this,"Empty Credentialls",Toast.LENGTH_LONG).show();
+        String txt_title = txtBookName.getText().toString();
 
-                }
+        if ((TextUtils.isEmpty(txt_Author))||(TextUtils.isEmpty(txt_Cat))||(TextUtils.isEmpty(txt_Edtion))||mImageUri==null){
+            Toast.makeText(BooksDetailsAdd.this,"Empty Credentials",Toast.LENGTH_LONG).show();
+        }
+        else {
 
-                else{
-                    rootNode  = FirebaseDatabase.getInstance();
-                    reference = rootNode.getReference("Books");
+            StorageReference fileref = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
+            fileref.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    String txt_title = txtBookName.getText().toString();
-                    AddBookHelperClass helperClass = new AddBookHelperClass(txt_title, txt_Author, txt_Cat, txt_Edtion);
-                    reference.child(txt_title).setValue(helperClass).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
                         @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(BooksDetailsAdd.this, "Successfully Added in the Database", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(BooksDetailsAdd.this,MainActivity.class));
+                        public void run() {
+                            mprogressbar.setProgress(0);
+                        }
+                    }, 500);
+                    fileref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            rootNode = FirebaseDatabase.getInstance();
+                            reference = rootNode.getReference("Books");
+                            AddBookHelperClass helperClass = new AddBookHelperClass(txt_title, txt_Author, txt_Cat, txt_Edtion, uri.toString());
+                            reference.child(txt_title).setValue(helperClass);
+
                             finish();
+                            Toast.makeText(BooksDetailsAdd.this, "Uploaded Successfully!", Toast.LENGTH_SHORT).show();
 
                         }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(BooksDetailsAdd.this,e.getMessage(),Toast.LENGTH_SHORT).show();
 
-                        }
+
                     });
 
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(@NonNull @NotNull UploadTask.TaskSnapshot snapshot) {
+                    double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                    mprogressbar.setProgress((int) progress);
 
 
                 }
-            }
-        });
-
-
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+                    Toast.makeText(BooksDetailsAdd.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
-} 
+
+    private String getFileExtension(Uri uri){
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cr.getType(uri));
+    }
+
+    private void openFileChooser(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data!=null && data.getData() != null){
+            mImageUri = data.getData();
+            imgview.setImageURI(mImageUri);
+        }
+    }
+}
