@@ -17,35 +17,36 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class AvailableBooksAdapter extends RecyclerView.Adapter<AvailableBooksAdapter.ViewHolder> {
-    private Context context;
+    Context context;
 
-    private ArrayList<Contact> contacts ;
-    public AvailableBooksAdapter(Context context) {
+    ArrayList<Contact> contacts ;
+    public AvailableBooksAdapter(Context context, ArrayList<Contact> contacts) {
         this.context = context;
+        this.contacts = contacts;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_book_list_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtBookName.setText(contacts.get(position).getTitle());
-        holder.txtAuthor.setText(contacts.get(position).getAuthor());
-        holder.txtAvailabitilty.setText(contacts.get(position).getAvailability().toString());
+        Contact contact = contacts.get(position);
+        holder.txtBookName.setText(contact.getTitle());
+        holder.txtAuthor.setText(contact.getAuthor());
+
         holder.parent2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, contacts.get(position).getTitle() + " Selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, contact.getTitle() + " Selected", Toast.LENGTH_SHORT).show();
             }
        });
-        Glide.with(context)
-                .asBitmap()
-                .load(contacts.get(position).getImageUrl())
+        Glide.with(holder.bookIcon.getContext())
+                .load(contact.getIcon())
                 .into(holder.bookIcon);
 
 }
@@ -55,10 +56,7 @@ public class AvailableBooksAdapter extends RecyclerView.Adapter<AvailableBooksAd
         return contacts.size();
     }
 
-    public void setContact(ArrayList<Contact> contact) {
-        this.contacts = contact;
-        notifyDataSetChanged();
-    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         private TextView txtBookName;
