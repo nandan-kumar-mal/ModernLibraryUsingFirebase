@@ -25,7 +25,8 @@ public class BorrowABook extends AppCompatActivity {
 
     private TextView txttitle, txtauthor, txtcategory, txtedition;
     private AutoCompleteTextView acedtxtRollNo;
-    private List<String> studentsroll;
+    ArrayList<String> studentsroll;
+    ArrayAdapter<String> adapter;
     private DatabaseReference mref;
 
     
@@ -44,23 +45,24 @@ public class BorrowABook extends AppCompatActivity {
         
         acedtxtRollNo = findViewById(R.id.actv);
         studentsroll = new ArrayList<String>();
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item,studentsroll);
+        acedtxtRollNo.setAdapter(adapter);
 
         showBookDetails();
-        mref = FirebaseDatabase.getInstance().getReference();
-        mref.child("Students").addValueEventListener(new ValueEventListener() {
+        mref = FirebaseDatabase.getInstance().getReference("User");
+        mref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot rollSnapshot: snapshot.getChildren()){
-                    String roll_no = rollSnapshot.child("Roll No").getValue(String.class);
-                    studentsroll.add(roll_no);
-                    ArrayAdapter<String> studentsAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, studentsroll);
-                    acedtxtRollNo.setAdapter(studentsAdapter);
+                    studentsroll.add(rollSnapshot.getValue().toString());
+                    adapter.notifyDataSetChanged();
+
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(BorrowABook.this, "Unsuccessful Data Loading", Toast.LENGTH_SHORT).show();
+
 
             }
         });
