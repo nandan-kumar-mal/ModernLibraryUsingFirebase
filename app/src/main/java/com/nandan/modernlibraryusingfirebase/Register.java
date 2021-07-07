@@ -35,8 +35,7 @@ public class Register extends AppCompatActivity {
 
     private AutoCompleteTextView autoCompleteTextView;
 
-    public Register() {
-    }
+    public Register() { }
     String txt_fullName,txt_rollNo,txt_Class,txt_email,txt_password;
 
     @Override
@@ -69,6 +68,7 @@ public class Register extends AppCompatActivity {
                  txt_email = email.getEditText().getText().toString();
                  txt_password = password.getEditText().getText().toString();
 
+
                 if ((TextUtils.isEmpty(txt_email)) || (TextUtils.isEmpty(txt_password))) {
                     Toast.makeText(Register.this, "Empty Credentialls", Toast.LENGTH_LONG).show();
                 } else if (txt_password.length() < 6) {
@@ -85,10 +85,12 @@ public class Register extends AppCompatActivity {
     public void storeUserData() {
 
          rootNode=FirebaseDatabase.getInstance();
-         user_node=rootNode.getReference("User");
+         user_node=rootNode.getReference().child("User");
 
          UserHelperClass addNewUser = new UserHelperClass(txt_fullName,txt_rollNo,txt_Class,txt_email,txt_password);
-         user_node.child(txt_rollNo).setValue(addNewUser);
+
+         user_node.setValue(addNewUser);
+
 
 
     }

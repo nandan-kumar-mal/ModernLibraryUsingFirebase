@@ -71,6 +71,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/Student_Detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_Edition"
@@ -156,10 +157,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/student_details"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Student Roll No."
+                    android:layout_margin="20dp"
                     android:completionThreshold="1"
+                    android:hint="Select RollNo"
+
+
                     />
+
                 <TextView
                     android:id="@+id/txt_anchor"
                     android:layout_width="wrap_content"
