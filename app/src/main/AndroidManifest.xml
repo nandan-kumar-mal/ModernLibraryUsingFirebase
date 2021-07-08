@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ModernLibraryUsingFirebase">
+        <activity android:name=".ReturnABook"></activity>
+        <activity android:name=".BorrowABook" />
         <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,9 +42,7 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Register" />
         <activity android:name=".Login" />
-        <activity android:name=".activity_start">
-
-        </activity>
+        <activity android:name=".activity_welcome" />
 
         <meta-data
             android:name="preloaded_fonts"
