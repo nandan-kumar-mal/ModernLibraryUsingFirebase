@@ -36,7 +36,7 @@ public class Semester_I_books extends AppCompatActivity {
         contacts = new ArrayList<>();
         database = FirebaseDatabase.getInstance().getReference("Books");
         Query query = FirebaseDatabase.getInstance().getReference("Books")
-                .orderByChild("category").equalTo("Fiction");
+                .orderByChild("category").equalTo("Semester I");
        query.addListenerForSingleValueEvent(valueEventListener);
   //      database.addListenerForSingleValueEvent(valueEventListener);
 

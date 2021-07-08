@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,7 +28,8 @@ public class BorrowABook extends AppCompatActivity {
     private AutoCompleteTextView acedtxtRollNo;
     ArrayList<String> studentsroll;
     ArrayAdapter<String> adapter;
-    private DatabaseReference mref;
+    private DatabaseReference mref, nref;
+    private Button btnFin;
 
     
     @Override
@@ -42,6 +45,7 @@ public class BorrowABook extends AppCompatActivity {
         txt_name=findViewById(R.id.Name);
         txt_roll=findViewById(R.id.RollNo);
         txt_year=findViewById(R.id.Year);
+        btnFin=findViewById(R.id.btn_Finish);
 
 
 
@@ -52,6 +56,7 @@ public class BorrowABook extends AppCompatActivity {
         acedtxtRollNo.setAdapter(adapter);
 
         mref = FirebaseDatabase.getInstance().getReference("User");
+        nref = FirebaseDatabase.getInstance().getReference("Books");
 
         acedtxtRollNo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -110,6 +115,22 @@ public class BorrowABook extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+
+            }
+        });
+
+        btnFin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title = txttitle.getText().toString();
+                String roll = txt_roll.getText().toString();
+
+                nref.child(title).child("availability").setValue("No");
+                mref.child(roll).child("BorrowedBooks").setValue(title);
+                Toast.makeText(BorrowABook.this, "Transaction Successfully!", Toast.LENGTH_SHORT).show();
+                finish();
+
 
 
             }

@@ -60,7 +60,7 @@
             android:layout_toRightOf="@id/available"
             android:layout_alignParentRight="true"
             android:layout_alignBaseline="@id/available"
-            tools:text="Yes"
+            tools:text="NO"
             />
 
 

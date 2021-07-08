@@ -1,9 +1,17 @@
 package com.nandan.modernlibraryusingfirebase;
 
 public class Contact {
-    String title, icon, author;
+    String title, icon, author, availability;
 
     public Contact(){}
+
+    public void setAvailability(String availability) {
+        this.availability = availability;
+    }
+
+    public String getAvailability() {
+        return availability;
+    }
 
     public void setTitle(String title) {
         this.title = title;
@@ -17,10 +25,11 @@ public class Contact {
         this.author = author;
     }
 
-    public Contact(String title, String icon, String author) {
+    public Contact(String title, String icon, String author, String availability) {
         this.title = title;
         this.icon = icon;
         this.author = author;
+        this.availability = availability;
     }
 
     public String getTitle() {
