@@ -1,9 +1,5 @@
 package com.nandan.modernlibraryusingfirebase;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,7 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -108,6 +107,7 @@ public class BooksDetailsAdd extends AppCompatActivity {
                             reference = rootNode.getReference("Books");
                             AddBookHelperClass helperClass = new AddBookHelperClass(txt_title, txt_Author, txt_Cat, txt_Edtion, uri.toString());
                             reference.child(txt_title).setValue(helperClass);
+                            reference.child(txt_title).child("availability").setValue("Yes");
 
                             finish();
                             Toast.makeText(BooksDetailsAdd.this, "Uploaded Successfully!", Toast.LENGTH_SHORT).show();
