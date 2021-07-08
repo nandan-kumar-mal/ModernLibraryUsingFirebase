@@ -51,6 +51,9 @@ public class Register extends AppCompatActivity {
         fauth = FirebaseAuth.getInstance();
         autoCompleteTextView = findViewById(R.id.actView);
 
+        rootNode=FirebaseDatabase.getInstance();
+        user_node=rootNode.getReference().child("User");
+
         String[] studentClass = getResources().getStringArray(R.array.Class);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.signup_dropdown_item, studentClass);
         autoCompleteTextView.setAdapter(arrayAdapter);
@@ -76,6 +79,7 @@ public class Register extends AppCompatActivity {
                 } else {
                     registerUser(txt_email, txt_password);
                     storeUserData();
+                    user_node.child(txt_rollNo).child("BorrowedBooks").setValue("null");
                 }
 
             }
@@ -84,12 +88,12 @@ public class Register extends AppCompatActivity {
 
     public void storeUserData() {
 
-         rootNode=FirebaseDatabase.getInstance();
-         user_node=rootNode.getReference().child("User");
+
 
          UserHelperClass addNewUser = new UserHelperClass(txt_fullName,txt_rollNo,txt_Class,txt_email,txt_password);
 
-         user_node.setValue(addNewUser);
+         user_node.child(txt_rollNo).setValue(addNewUser);
+
 
 
 
