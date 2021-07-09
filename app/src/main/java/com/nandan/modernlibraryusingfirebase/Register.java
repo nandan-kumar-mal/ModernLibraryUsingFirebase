@@ -28,13 +28,15 @@ public class Register extends AppCompatActivity {
     private TextInputLayout password;
     private Button register;
     private FirebaseAuth fauth;
+    FirebaseDatabase rootNode;
+    DatabaseReference user_node ;
+
 
 
     private AutoCompleteTextView autoCompleteTextView;
 
-    public Register() {
-    }
-
+    public Register() { }
+    String txt_fullName,txt_rollNo,txt_Class,txt_email,txt_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,9 @@ public class Register extends AppCompatActivity {
         fauth = FirebaseAuth.getInstance();
         autoCompleteTextView = findViewById(R.id.actView);
 
+        rootNode=FirebaseDatabase.getInstance();
+        user_node=rootNode.getReference().child("User");
+
         String[] studentClass = getResources().getStringArray(R.array.Class);
         ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.signup_dropdown_item, studentClass);
         autoCompleteTextView.setAdapter(arrayAdapter);
@@ -56,11 +61,16 @@ public class Register extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!ValidateFullName()|!ValidateRollNo()|!ValidateEmail()|!ValidatePassword()){
+               /* if(!ValidateFullName()|!ValidateRollNo()|!ValidateEmail()|!ValidatePassword()){
                     return;
-                }
-                String txt_email = email.getEditText().getText().toString();
-                String txt_password = password.getEditText().getText().toString();
+                }*/
+
+                 txt_fullName = fullName.getEditText().getText().toString();
+                 txt_rollNo = rollNo.getEditText().getText().toString();
+                 txt_Class = autoCompleteTextView.getText().toString();
+                 txt_email = email.getEditText().getText().toString();
+                 txt_password = password.getEditText().getText().toString();
+
 
                 if ((TextUtils.isEmpty(txt_email)) || (TextUtils.isEmpty(txt_password))) {
                     Toast.makeText(Register.this, "Empty Credentialls", Toast.LENGTH_LONG).show();
@@ -69,6 +79,7 @@ public class Register extends AppCompatActivity {
                 } else {
                     registerUser(txt_email, txt_password);
                     storeUserData();
+                    user_node.child(txt_rollNo).child("BorrowedBooks").setValue("null");
                 }
 
             }
@@ -77,10 +88,12 @@ public class Register extends AppCompatActivity {
 
     public void storeUserData() {
 
-        FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-        DatabaseReference user_node= rootNode.getReference();
 
-        user_node.child("Users");
+
+         UserHelperClass addNewUser = new UserHelperClass(txt_fullName,txt_rollNo,txt_Class,txt_email,txt_password);
+
+         user_node.child(txt_rollNo).setValue(addNewUser);
+
 
 
 
@@ -151,7 +164,7 @@ public class Register extends AppCompatActivity {
         }
     }
 
-    private boolean ValidatePassword() {
+    /*private boolean ValidatePassword() {
         String val = password.getEditText().getText().toString().trim();
         String checkPassword = "^" +
                 "(?=.*[0-9])" +         //at least 1 digit
@@ -174,7 +187,7 @@ public class Register extends AppCompatActivity {
             return true;
 
         }
-    }
+    }*/
 
 
 }

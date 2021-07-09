@@ -71,6 +71,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/Student_Detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/txt_Edition"
@@ -142,6 +143,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <TextView
+                    android:id="@+id/student_details"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
@@ -154,27 +156,21 @@
                     android:id="@+id/actv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/Student_Detail"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Student Roll No."
+                    android:layout_below="@+id/student_details"
+                    android:layout_margin="10dp"
                     android:completionThreshold="1"
+                    android:hint="Select RollNo"
+
+
                     />
-                <TextView
-                    android:id="@+id/txt_anchor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Student's Roll Nos"
-                    android:layout_below="@+id/actv"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="10dp"
-                    android:paddingBottom="16dp"
-                    />
+
+
 
                 <TextView
                     android:id="@+id/txtStu_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_anchor"
+                    android:layout_below="@+id/actv"
                     android:text="Name"
                     android:textSize="20sp"
                     android:layout_marginLeft="10dp"
@@ -207,7 +203,7 @@
                     android:id="@+id/Name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/txt_anchor"
+                    android:layout_below="@+id/actv"
                     android:layout_toRightOf="@+id/txtStu_name"
                     android:text="None"
                     android:textSize="20sp"
@@ -239,6 +235,7 @@
                     />
 
                 <Button
+                    android:id="@+id/btn_Finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Finish"

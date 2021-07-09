@@ -40,9 +40,12 @@
            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:boxStrokeWidthFocused="1dp"
+            app:boxStrokeWidthFocused="2dp"
             app:boxStrokeColor="@color/black"
             android:textColorHint="@color/black"
+            app:hintTextColor="@color/black"
+            app:startIconDrawable="@drawable/ic_baseline_email_24"
+            app:startIconTint="@color/black"
             app:endIconMode="clear_text">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -62,6 +65,7 @@
             android:layout_marginTop="6dp"
             app:errorEnabled="true"
             android:textColorHint="@color/black"
+            app:hintTextColor="@color/black"
             app:boxStrokeWidthFocused="2dp"
             app:boxStrokeColor="@color/black"
             app:startIconDrawable="@drawable/ic_password_lock"
