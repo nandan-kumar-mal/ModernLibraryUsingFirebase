@@ -10,4 +10,16 @@
         <item>TDC 2nd Year</item>
         <item>TDC 3rd Year</item>
     </string-array>
+    <string-array name="Category">
+        <item>Semester I</item>
+        <item>Semester II</item>
+        <item>Semester III</item>
+        <item>Semester IV</item>
+        <item>Semester V</item>
+        <item>Semester VI</item>
+        <item>Miscellaneous</item>
+
+    </string-array>
+
+
 </resources>
