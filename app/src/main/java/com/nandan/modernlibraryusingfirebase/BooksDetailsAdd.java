@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
@@ -32,8 +31,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import org.jetbrains.annotations.NotNull;
-
 public class BooksDetailsAdd extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private EditText edtxtAuth, edtEd;
@@ -48,7 +45,7 @@ public class BooksDetailsAdd extends AppCompatActivity {
     DatabaseReference reference;
     StorageReference storageReference;
     String cate;
-    private static final String TAG = "MyActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,19 +57,23 @@ public class BooksDetailsAdd extends AppCompatActivity {
         edtEd = findViewById(R.id.edtTxtEd);
         mprogressbar = findViewById(R.id.progress_Bar);
         String[] Category = getResources().getStringArray(R.array.Category);
-        ArrayAdapter adapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, Category);
+        ArrayAdapter adapter = new ArrayAdapter (this, android.R.layout.simple_spinner_dropdown_item, Category);
+        adapter.notifyDataSetChanged();
 // Specify the layout to use when the list of choices appears
 
 // Apply the adapter to the spinner
         spin.setAdapter(adapter);
-        spin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 cate = parent.getItemAtPosition(position).toString();
-                Toast.makeText(BooksDetailsAdd.this, cate+" is selected", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
-
 
 
         txtBookName = findViewById(R.id.txtBookName);
@@ -85,7 +86,7 @@ public class BooksDetailsAdd extends AppCompatActivity {
         btn_ChooseImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //openFileChooser();
+                openFileChooser();
             }
         });
 
@@ -94,89 +95,89 @@ public class BooksDetailsAdd extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                uploadtoFirebase();
+               uploadtoFirebase();
             }
     });
     }
-//    private void uploadtoFirebase() {
-//        String txt_Author = edtxtAuth.getText().toString();
-//        String txt_Cat = cate;
-//        String txt_Edtion = edtEd.getText().toString();
-//
-//        String txt_title = txtBookName.getText().toString();
-//
-//        if ((TextUtils.isEmpty(txt_Author))||(TextUtils.isEmpty(txt_Cat))||(TextUtils.isEmpty(txt_Edtion))||mImageUri==null){
-//            Toast.makeText(BooksDetailsAdd.this,"Empty Credentials",Toast.LENGTH_LONG).show();
-//        }
-//        else {
-//
-//            StorageReference fileref = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
-//            fileref.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-//
-//                    Handler handler = new Handler();
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            mprogressbar.setProgress(0);
-//                        }
-//                    }, 500);
-//                    fileref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//                        @Override
-//                        public void onSuccess(Uri uri) {
-//                            rootNode = FirebaseDatabase.getInstance();
-//                            reference = rootNode.getReference("Books");
-//                            AddBookHelperClass helperClass = new AddBookHelperClass(txt_title, txt_Author, txt_Cat, txt_Edtion, uri.toString());
-//                            reference.child(txt_title).setValue(helperClass);
-//                            reference.child(txt_title).child("availability").setValue("Yes");
-//
-//                            finish();
-//                            Toast.makeText(BooksDetailsAdd.this, "Uploaded Successfully!", Toast.LENGTH_SHORT).show();
-//
-//                        }
-//
-//
-//                    });
-//
-//                }
-//            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-//                @Override
-//                public void onProgress(@NonNull @NotNull UploadTask.TaskSnapshot snapshot) {
-//                    double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
-//                    mprogressbar.setProgress((int) progress);
-//
-//
-//                }
-//            }).addOnFailureListener(new OnFailureListener() {
-//                @Override
-//                public void onFailure(@NonNull @NotNull Exception e) {
-//                    Toast.makeText(BooksDetailsAdd.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        }
-//    }
-//
-//    private String getFileExtension(Uri uri){
-//        ContentResolver cr = getContentResolver();
-//        MimeTypeMap mime = MimeTypeMap.getSingleton();
-//        return mime.getExtensionFromMimeType(cr.getType(uri));
-//    }
-//
-//    private void openFileChooser(){
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-//    }
-//
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//
-//        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data!=null && data.getData() != null){
-//            mImageUri = data.getData();
-//            imgview.setImageURI(mImageUri);
-//        }
-//    }
+    private void uploadtoFirebase() {
+        String txt_Author = edtxtAuth.getText().toString();
+        String txt_Cat = cate;
+        String txt_Edtion = edtEd.getText().toString();
+
+        String txt_title = txtBookName.getText().toString();
+
+        if ((TextUtils.isEmpty(txt_Author))||(TextUtils.isEmpty(txt_Cat))||(TextUtils.isEmpty(txt_Edtion))||mImageUri==null){
+            Toast.makeText(BooksDetailsAdd.this,"Empty Credentials",Toast.LENGTH_LONG).show();
+        }
+        else {
+
+            StorageReference fileref = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(mImageUri));
+            fileref.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mprogressbar.setProgress(0);
+                        }
+                    }, 500);
+                    fileref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            rootNode = FirebaseDatabase.getInstance();
+                            reference = rootNode.getReference("Books");
+                            AddBookHelperClass helperClass = new AddBookHelperClass(txt_title, txt_Author, txt_Cat, txt_Edtion, uri.toString());
+                            reference.child(txt_title).setValue(helperClass);
+                            reference.child(txt_title).child("availability").setValue("Yes");
+
+                            finish();
+                            Toast.makeText(BooksDetailsAdd.this, "Uploaded Successfully!", Toast.LENGTH_SHORT).show();
+
+                        }
+
+
+                    });
+
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                    double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
+                    mprogressbar.setProgress((int) progress);
+
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull  Exception e) {
+                    Toast.makeText(BooksDetailsAdd.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    private String getFileExtension(Uri uri){
+        ContentResolver cr = getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cr.getType(uri));
+    }
+
+    private void openFileChooser(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data!=null && data.getData() != null){
+            mImageUri = data.getData();
+            imgview.setImageURI(mImageUri);
+        }
+    }
 }
