@@ -97,47 +97,51 @@ public class BookAdd extends AppCompatActivity {
             public void onClick(View v) {
 
                 savetoGallery();
+                Toast.makeText(BookAdd.this, "Saved Image in the Gallery", Toast.LENGTH_SHORT).show();
 
             }
         });
     }
 
     private void savetoGallery() {
+        if (qrCodeIV.getDrawable() == null) {
+            Toast.makeText(this, "Generate QR image first", Toast.LENGTH_SHORT).show();
+        } else {
 
-        BitmapDrawable bitmapDrawable = (BitmapDrawable) qrCodeIV.getDrawable();
-        Bitmap bitmap = bitmapDrawable.getBitmap();
+            BitmapDrawable bitmapDrawable = (BitmapDrawable) qrCodeIV.getDrawable();
+            Bitmap bitmap = bitmapDrawable.getBitmap();
 
-        FileOutputStream outputStream = null;
-        File file = Environment.getExternalStorageDirectory();
-        File dir = new File(file.getAbsolutePath() + "/QR images");
-        dir.mkdir();
+            FileOutputStream outputStream = null;
+            File file = Environment.getExternalStorageDirectory();
+            File dir = new File(file.getAbsolutePath() + "/QR images");
+            dir.mkdir();
 
-        String filename = String.format("%d.png",System.currentTimeMillis());
-        File outfile = new File(dir, filename);
-        try{
-           outputStream = new FileOutputStream(outfile);
+            String filename = String.format("%d.png", System.currentTimeMillis());
+            File outfile = new File(dir, filename);
+            try {
+                outputStream = new FileOutputStream(outfile);
 
-        }catch (Exception e){
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
 
-        }
+            }
 
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
-        try {
-            outputStream.flush();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            try {
+                outputStream.flush();
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        try {
-            outputStream.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                outputStream.close();
 
-        }catch (Exception e){
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
 
         }
 
     }
-
-
 }
