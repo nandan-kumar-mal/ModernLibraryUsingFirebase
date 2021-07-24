@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +18,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -26,7 +31,8 @@ public class BorrowABook extends AppCompatActivity {
     private AutoCompleteTextView acedtxtRollNo;
     ArrayList<String> studentsroll;
     ArrayAdapter<String> adapter;
-    private DatabaseReference mref;
+    private DatabaseReference mref, nref,bref;
+    private Button btnFin;
 
     
     @Override
@@ -42,6 +48,7 @@ public class BorrowABook extends AppCompatActivity {
         txt_name=findViewById(R.id.Name);
         txt_roll=findViewById(R.id.RollNo);
         txt_year=findViewById(R.id.Year);
+        btnFin=findViewById(R.id.btn_Finish);
 
 
 
@@ -52,6 +59,8 @@ public class BorrowABook extends AppCompatActivity {
         acedtxtRollNo.setAdapter(adapter);
 
         mref = FirebaseDatabase.getInstance().getReference("User");
+        nref = FirebaseDatabase.getInstance().getReference("Books");
+        bref = FirebaseDatabase.getInstance().getReference("User").child("BorrowedBooks");
 
         acedtxtRollNo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,20 +82,6 @@ public class BorrowABook extends AppCompatActivity {
 
                     }
                 });
-
- //                       addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        String Usr_key = snapshot.getKey();
-//                        txt_name.setText(snapshot.child(Usr_key).child("name").getValue().toString());
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
 
 
             }
@@ -110,6 +105,41 @@ public class BorrowABook extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+
+
+            }
+        });
+
+        btnFin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title = txttitle.getText().toString();
+                String roll = txt_roll.getText().toString();
+
+                Query query = mref.child(roll).child("BorrowedBooks");
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        for (DataSnapshot data:snapshot.getChildren())
+                        {
+                            if(data.equals("null"))
+                            {
+                               data.getRef().setValue(title);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                    }
+                });
+                nref.child(title).child("availability").setValue("No");
+            //    mref.child(roll).child("BorrowedBooks").child("Borrow");
+
+                Toast.makeText(BorrowABook.this, "Transaction Successfully!", Toast.LENGTH_SHORT).show();
+                finish();
+
 
 
             }

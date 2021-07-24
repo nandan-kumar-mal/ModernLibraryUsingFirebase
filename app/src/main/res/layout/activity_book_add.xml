@@ -10,23 +10,32 @@
         view to display our QR code-->
     <ImageView
         android:id="@+id/idIVQrcode"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:contentDescription="QR Code" />
 
     <!--Edit text to enter text
         for creating a QR code-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSave"
+        android:text="Save Image"
+        android:layout_margin="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/idIVQrcode"/>
+
     <EditText
         android:id="@+id/idEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/idIVQrcode"
+        android:layout_below="@id/btnSave"
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
-        android:autofillHints=""
+
         android:hint="Enter Book Title"
         android:inputType="text" />
 

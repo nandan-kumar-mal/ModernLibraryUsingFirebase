@@ -8,10 +8,13 @@ import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +31,11 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import org.jetbrains.annotations.NotNull;
-
 public class BooksDetailsAdd extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
-    private EditText edtxtAuth, edtxtCat, edtEd;
+    private EditText edtxtAuth, edtEd;
     private TextView txtBookName;
+    private Spinner spin;
     private Button btnFin, btn_ChooseImg;
     private ImageView imgview;
     private Uri mImageUri;
@@ -42,6 +44,8 @@ public class BooksDetailsAdd extends AppCompatActivity {
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     StorageReference storageReference;
+    String cate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +53,28 @@ public class BooksDetailsAdd extends AppCompatActivity {
         setContentView(R.layout.activity_books_details_add);
 
         edtxtAuth = findViewById(R.id.edtxtAuth);
-        edtxtCat = findViewById(R.id.edtTxtCat);
+        spin = findViewById(R.id.spin);
         edtEd = findViewById(R.id.edtTxtEd);
         mprogressbar = findViewById(R.id.progress_Bar);
+        String[] Category = getResources().getStringArray(R.array.Category);
+        ArrayAdapter adapter = new ArrayAdapter (this, android.R.layout.simple_spinner_dropdown_item, Category);
+        adapter.notifyDataSetChanged();
+// Specify the layout to use when the list of choices appears
+
+// Apply the adapter to the spinner
+        spin.setAdapter(adapter);
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                cate = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         txtBookName = findViewById(R.id.txtBookName);
         btnFin = findViewById(R.id.btnFin);
@@ -72,13 +95,13 @@ public class BooksDetailsAdd extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                uploadtoFirebase();
+               uploadtoFirebase();
             }
     });
     }
     private void uploadtoFirebase() {
         String txt_Author = edtxtAuth.getText().toString();
-        String txt_Cat = edtxtCat.getText().toString();
+        String txt_Cat = cate;
         String txt_Edtion = edtEd.getText().toString();
 
         String txt_title = txtBookName.getText().toString();
@@ -120,7 +143,7 @@ public class BooksDetailsAdd extends AppCompatActivity {
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onProgress(@NonNull @NotNull UploadTask.TaskSnapshot snapshot) {
+                public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                     double progress = (100.0 * snapshot.getBytesTransferred() / snapshot.getTotalByteCount());
                     mprogressbar.setProgress((int) progress);
 
@@ -128,7 +151,7 @@ public class BooksDetailsAdd extends AppCompatActivity {
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onFailure(@NonNull @NotNull Exception e) {
+                public void onFailure(@NonNull  Exception e) {
                     Toast.makeText(BooksDetailsAdd.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
                 }
             });

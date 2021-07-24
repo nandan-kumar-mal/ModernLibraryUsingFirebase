@@ -1,12 +1,12 @@
 package com.nandan.modernlibraryusingfirebase;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,7 +36,7 @@ public class Semester_I_books extends AppCompatActivity {
         contacts = new ArrayList<>();
         database = FirebaseDatabase.getInstance().getReference("Books");
         Query query = FirebaseDatabase.getInstance().getReference("Books")
-                .orderByChild("category").equalTo("Fiction");
+                .orderByChild("category").equalTo("Semester I");
        query.addListenerForSingleValueEvent(valueEventListener);
   //      database.addListenerForSingleValueEvent(valueEventListener);
 
@@ -54,6 +54,7 @@ public class Semester_I_books extends AppCompatActivity {
             if(snapshot.exists()){
                 contacts.clear();
                 for(DataSnapshot data: snapshot.getChildren()){
+
                     Contact contact = data.getValue(Contact.class);
                     contacts.add(contact);
 

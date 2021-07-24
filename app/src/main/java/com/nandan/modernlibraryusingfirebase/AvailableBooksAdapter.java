@@ -38,6 +38,7 @@ public class AvailableBooksAdapter extends RecyclerView.Adapter<AvailableBooksAd
         Contact contact = contacts.get(position);
         holder.txtBookName.setText(contact.getTitle());
         holder.txtAuthor.setText(contact.getAuthor());
+        holder.txtAvailabitilty.setText(contact.getAvailability());
 
         holder.parent2.setOnClickListener(new View.OnClickListener() {
             @Override
