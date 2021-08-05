@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BookCategory"
+    android:orientation="vertical"
+    >
+  <com.google.android.material.tabs.TabLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/tabLayout"
+      android:background="@color/purple_500"
+      app:tabTextColor="@color/black"
+      app:tabSelectedTextColor="@color/white"
+      app:tabIndicatorColor="@color/white"
+      >
+      <com.google.android.material.tabs.TabItem
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/tabsem"
+          android:text="Books by Semester"
+          />
+
+      <com.google.android.material.tabs.TabItem
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/tabtopics"
+          android:text="Books by Topics"
+          />
+
+
+  </com.google.android.material.tabs.TabLayout>
+<androidx.viewpager.widget.ViewPager
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/viewPager"/>
+</LinearLayout>
