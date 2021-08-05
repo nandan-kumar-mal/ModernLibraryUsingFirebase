@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReturnABook">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/rDetail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Book Details"
+
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/r_txt_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rDetail"
+                    android:text="Title"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    />
+
+                <TextView
+                    android:id="@+id/r_txt_Author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_txt_title"
+                    android:text="Author"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/r_txt_Edition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_txt_Author"
+                    android:text="Edition"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/r_Student_Detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_txt_Edition"
+                    android:text="Category"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/r_Title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rDetail"
+                    android:layout_toRightOf="@+id/r_txt_title"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="30dp"
+                    />
+
+                <TextView
+                    android:id="@+id/r_Author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_Title"
+                    android:layout_toRightOf="@+id/r_txt_title"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/r_Edition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_Author"
+                    android:layout_toRightOf="@+id/r_txt_title"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/r_Categ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_Edition"
+                    android:layout_toRightOf="@+id/r_txt_title"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+
+
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/r_student_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/aclonica"
+                    android:text="Student Details"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"/>
+
+                <AutoCompleteTextView
+                    android:id="@+id/r_actv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_student_details"
+                    android:layout_margin="10dp"
+                    android:completionThreshold="1"
+                    android:hint="Select RollNo"
+
+
+                    />
+
+
+
+                <TextView
+                    android:id="@+id/r_txtStu_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_actv"
+                    android:text="Name"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/r_txt_Roll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_txtStu_name"
+                    android:text="Roll No."
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/r_txtYear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_txt_Roll"
+                    android:text="Year"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+
+                <TextView
+                    android:id="@+id/r_Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_actv"
+                    android:layout_toRightOf="@+id/r_txtStu_name"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="68dp"
+                    android:layout_marginTop="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/r_RollNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_Name"
+                    android:layout_toRightOf="@+id/r_txt_Roll"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/r_Year"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_RollNo"
+                    android:layout_toRightOf="@+id/r_txt_Roll"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    />
+
+                <Button
+                    android:id="@+id/r_btn_Finish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Finish"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

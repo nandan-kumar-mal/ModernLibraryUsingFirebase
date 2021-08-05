@@ -58,7 +58,7 @@ public class TransactionsActivity extends AppCompatActivity {
         btnBor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = resultData.getText().toString();
+                String title = "master";
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
 
                 Query checkBook = reference.orderByChild("title").equalTo(title);
@@ -99,7 +99,41 @@ public class TransactionsActivity extends AppCompatActivity {
         btnRetn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(TransactionsActivity.this, ReturnABook.class));
+                String title = "master";
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
+
+                Query checkBook = reference.orderByChild("title").equalTo(title);
+                checkBook.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            String author = snapshot.child(title).child("author").getValue(String.class);
+                            String category = snapshot.child(title).child("category").getValue(String.class);
+                            String edition = snapshot.child(title).child("edition").getValue(String.class);
+
+                            Intent intent = new Intent(getApplicationContext(), ReturnABook.class);
+                            intent.putExtra("title", title);
+                            intent.putExtra("author", author);
+                            intent.putExtra("edition", edition);
+                            intent.putExtra("category", category);
+                            startActivity(intent);
+
+                        }
+                        else{
+                            Toast.makeText(TransactionsActivity.this, "Book is not available", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(TransactionsActivity.this, "Book is not available", Toast.LENGTH_SHORT).show();
+
+
+                    }
+                });
+
+
             }
         });
 

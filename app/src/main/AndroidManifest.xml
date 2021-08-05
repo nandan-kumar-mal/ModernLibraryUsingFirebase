@@ -42,7 +42,13 @@
         <activity android:name=".BookAdd" />
         <activity android:name=".Booklist" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Register" />
+        <activity android:name=".Register"/>
+
+
+
+
+
+
         <activity android:name=".Login" />
         <activity android:name=".activity_welcome" />
 
