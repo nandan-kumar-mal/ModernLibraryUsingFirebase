@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
 
             case R.id.cardBooklist:
-                i = new Intent(this, Booklist.class);
+                i = new Intent(this, BookCategory.class);
                 startActivity(i);
                 break;
 
