@@ -3,10 +3,14 @@ package com.nandan.modernlibraryusingfirebase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +27,8 @@ public class books_by_topic extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    RecyclerView recyclerView;
+
 
     public books_by_topic() {
         // Required empty public constructor
@@ -59,6 +65,63 @@ public class books_by_topic extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_books_by_topic, container, false);
+        View view = inflater.inflate(R.layout.fragment_books_by_topic, container, false);
+        recyclerView = view.findViewById(R.id.recview2);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        recyclerView.setAdapter(new SemBookListAdapter(dataqueue(),getContext()));
+        return  view;
+    }
+
+    public ArrayList<Model> dataqueue()
+    {
+        ArrayList<Model> container = new ArrayList<>();
+        Model obj1 = new Model();
+        obj1.setTitle("Semester I");
+        obj1.setDesc("All the books under this topic");
+        obj1.setImgname(R.drawable.book138);
+        container.add(obj1);
+
+
+        Model obj2 = new Model();
+        obj2.setTitle("Semester II");
+        obj2.setDesc("All the books under this topic");
+        obj2.setImgname(R.drawable.sem2);
+        container.add(obj2);
+
+        Model obj3 = new Model();
+        obj3.setTitle("Semester III");
+        obj3.setDesc("All the books under this topic");
+        obj3.setImgname(R.drawable.book138);
+        container.add(obj3);
+
+        Model obj4 = new Model();
+        obj4.setTitle("Semester IV");
+        obj4.setDesc("All the books under this topic");
+        obj4.setImgname(R.drawable.book138);
+        container.add(obj4);
+
+        Model obj5 = new Model();
+        obj5.setTitle("Semester V");
+        obj5.setDesc("All the books under this topic");
+        obj5.setImgname(R.drawable.book138);
+        container.add(obj5);
+
+        Model obj6 = new Model();
+        obj6.setTitle("Semester VI");
+        obj6.setDesc("All the books under this topic");
+        obj6.setImgname(R.drawable.book138);
+        container.add(obj6);
+
+        Model obj7 = new Model();
+        obj7.setTitle("Miscellaneous");
+        obj7.setDesc("Miscellaneous books.");
+        obj7.setImgname(R.drawable.misc);
+        container.add(obj7);
+
+        return container;
+
+
+
     }
 }

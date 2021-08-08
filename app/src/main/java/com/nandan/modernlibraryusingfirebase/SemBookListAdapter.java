@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 
-public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHolder>  {
+public class SemBookListAdapter extends RecyclerView.Adapter<SemBookListAdapter.ViewHolder>  {
     ArrayList<Model> data;
     Context context;
 
@@ -48,7 +47,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.ViewHo
         }
     }
 
-    public BookListAdapter(ArrayList<Model> data , Context c) {
+    public SemBookListAdapter(ArrayList<Model> data , Context c) {
         this.data = data;
         this.context = c;
     }

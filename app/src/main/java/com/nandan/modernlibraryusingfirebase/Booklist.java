@@ -11,14 +11,14 @@ import java.util.ArrayList;
 public class Booklist extends AppCompatActivity {
 
     RecyclerView recv;
-    BookListAdapter adapter;
+    SemBookListAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booklist);
         recv = findViewById(R.id.revView);
         recv.setLayoutManager(new LinearLayoutManager(this));
-         adapter = new BookListAdapter(dataqueue(),this);
+         adapter = new SemBookListAdapter(dataqueue(),this);
          recv.setAdapter(adapter);
     }
 
