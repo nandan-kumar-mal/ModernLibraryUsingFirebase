@@ -1,22 +1,24 @@
 package com.nandan.modernlibraryusingfirebase;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
-
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
@@ -75,7 +77,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(drawer.isDrawerOpen(GravityCompat.START)){
             drawer.closeDrawer(GravityCompat.START);
         }else{
-        super.onBackPressed();
+            new AlertDialog.Builder(this)
+                    .setTitle("Confirm Exit?")
+                    .setMessage("Are you sure you want to exit?")
+                    .setNegativeButton("no", null)
+                    .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            MainActivity.super.onBackPressed();
+                        }
+                    } ).create().show();
+
     }
 }
 
@@ -124,7 +136,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new NotificationsFragment()).commit();
                 break;
             case R.id.nav_logout:
-                Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder logout_alert = new AlertDialog.Builder(this);
+                logout_alert.setMessage("Are you sure you want to Logout?")
+                        .setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                logout();
+
+                            }
+                        })
+                        .setNegativeButton("Cancel",null)
+                        .create().show();
+
                 break;
             case R.id.nav_share:
                 Toast.makeText(this, "Shared", Toast.LENGTH_SHORT).show();
@@ -136,5 +159,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         return true;
+    }
+
+    private void logout() {
+        FirebaseAuth.getInstance().signOut();
+        Toast.makeText(this, "Logged out", Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this,activity_welcome.class));
+        finish();
     }
 }

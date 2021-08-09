@@ -33,9 +33,9 @@ import com.google.firebase.storage.UploadTask;
 
 public class BooksDetailsAdd extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
-    private EditText edtxtAuth, edtEd;
+    private EditText edtxtAuth, edtEd,copies;
     private TextView txtBookName;
-    private Spinner spin;
+    private Spinner spin,spin1;
     private Button btnFin, btn_ChooseImg;
     private ImageView imgview;
     private Uri mImageUri;
@@ -45,6 +45,7 @@ public class BooksDetailsAdd extends AppCompatActivity {
     DatabaseReference reference;
     StorageReference storageReference;
     String cate;
+    String cTopic;
 
 
     @Override
@@ -53,12 +54,16 @@ public class BooksDetailsAdd extends AppCompatActivity {
         setContentView(R.layout.activity_books_details_add);
 
         edtxtAuth = findViewById(R.id.edtxtAuth);
+        copies=findViewById(R.id.No_of_copies);
         spin = findViewById(R.id.spin);
+        spin1 = findViewById(R.id.spin1);
         edtEd = findViewById(R.id.edtTxtEd);
         mprogressbar = findViewById(R.id.progress_Bar);
         String[] Category = getResources().getStringArray(R.array.Category);
         ArrayAdapter adapter = new ArrayAdapter (this, android.R.layout.simple_spinner_dropdown_item, Category);
         adapter.notifyDataSetChanged();
+
+
 // Specify the layout to use when the list of choices appears
 
 // Apply the adapter to the spinner
@@ -67,6 +72,23 @@ public class BooksDetailsAdd extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 cate = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        // topic spinner application
+        String[] Topics = getResources().getStringArray(R.array.Topics);
+        ArrayAdapter topicAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item,Topics);
+        adapter.notifyDataSetChanged();
+        spin1.setAdapter(topicAdapter);
+        spin1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                cTopic = parent.getItemAtPosition(position).toString();
             }
 
             @Override
@@ -102,11 +124,13 @@ public class BooksDetailsAdd extends AppCompatActivity {
     private void uploadtoFirebase() {
         String txt_Author = edtxtAuth.getText().toString();
         String txt_Cat = cate;
+        String txt_topic = cTopic;
+        String No_Of_Copies = copies.getText().toString();
         String txt_Edtion = edtEd.getText().toString();
 
         String txt_title = txtBookName.getText().toString();
 
-        if ((TextUtils.isEmpty(txt_Author))||(TextUtils.isEmpty(txt_Cat))||(TextUtils.isEmpty(txt_Edtion))||mImageUri==null){
+        if ((TextUtils.isEmpty(txt_Author))||(TextUtils.isEmpty(txt_Cat))||(TextUtils.isEmpty(txt_Edtion))||(TextUtils.isEmpty(No_Of_Copies))||mImageUri==null){
             Toast.makeText(BooksDetailsAdd.this,"Empty Credentials",Toast.LENGTH_LONG).show();
         }
         else {
@@ -128,7 +152,7 @@ public class BooksDetailsAdd extends AppCompatActivity {
                         public void onSuccess(Uri uri) {
                             rootNode = FirebaseDatabase.getInstance();
                             reference = rootNode.getReference("Books");
-                            AddBookHelperClass helperClass = new AddBookHelperClass(txt_title, txt_Author, txt_Cat, txt_Edtion, uri.toString());
+                            AddBookHelperClass helperClass = new AddBookHelperClass(txt_title, txt_Author, txt_Cat, txt_Edtion,uri.toString(),No_Of_Copies);
                             reference.child(txt_title).setValue(helperClass);
                             reference.child(txt_title).child("availability").setValue("Yes");
 

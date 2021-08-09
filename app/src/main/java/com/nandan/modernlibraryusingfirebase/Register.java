@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +30,8 @@ public class Register extends AppCompatActivity {
     private TextInputLayout password;
     private Button register;
     private FirebaseAuth fauth;
+    private ImageView registerBackBtn;
+
     FirebaseDatabase rootNode;
     DatabaseReference user_node ;
 
@@ -42,6 +46,7 @@ public class Register extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
 
         fullName = findViewById(R.id.reg_fullName);
@@ -51,6 +56,7 @@ public class Register extends AppCompatActivity {
         register = findViewById(R.id.RegBtn);
         fauth = FirebaseAuth.getInstance();
         autoCompleteTextView = findViewById(R.id.actView);
+        registerBackBtn = findViewById(R.id.reg_backButton);
 
         rootNode=FirebaseDatabase.getInstance();
         user_node=rootNode.getReference().child("User");
@@ -80,10 +86,18 @@ public class Register extends AppCompatActivity {
                 } else {
                     registerUser(txt_email, txt_password);
                     storeUserData();
-                    user_node.child(txt_rollNo).child("BorrowedBooks").child("Borrow_1").setValue("null");
-                    user_node.child(txt_rollNo).child("BorrowedBooks").child("Borrow_2").setValue("null");
+                    user_node.child(txt_rollNo).child("BorrowedBooks").setValue("null");
+                    //user_node.child(txt_rollNo).child("BorrowedBooks").child("Borrow_2").setValue("null");
+
                 }
 
+            }
+        });
+        registerBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Register.this,activity_welcome.class));
+                finish();
             }
         });
     }
@@ -190,6 +204,11 @@ public class Register extends AppCompatActivity {
 
         }
     }*/
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(Register.this,activity_welcome.class));
+        finish();
+    }
 
 
 }
