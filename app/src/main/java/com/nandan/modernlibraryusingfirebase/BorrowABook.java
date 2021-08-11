@@ -3,6 +3,7 @@ package com.nandan.modernlibraryusingfirebase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -32,7 +33,7 @@ public class BorrowABook extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     private DatabaseReference mref, nref,bref,cref;
     private Button btnFin;
-    int nCopies;
+
 
     
     @Override
@@ -111,6 +112,8 @@ public class BorrowABook extends AppCompatActivity {
         });
 
         btnFin.setOnClickListener(new View.OnClickListener() {
+            Integer nCopies;
+
             @Override
             public void onClick(View v) {
                 String title = txttitle.getText().toString();
@@ -120,6 +123,7 @@ public class BorrowABook extends AppCompatActivity {
                  bref.setValue(title);
 
                  cref=FirebaseDatabase.getInstance().getReference("Books").child(title);
+
                // Query query = mref.child(roll).child("BorrowedBooks");
 //                bref.addListenerForSingleValueEvent(new ValueEventListener() {
 //                    @Override
@@ -146,7 +150,11 @@ public class BorrowABook extends AppCompatActivity {
                     cref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                        nCopies = (int) snapshot.child("copies").getValue();
+                        nCopies =  snapshot.child("copies").getValue(Integer.class);
+                        Log.d("no of copies", "onDataChange: "+ nCopies);
+                        nCopies = nCopies-1;
+                        Log.d("noOf copies onDecrement", "onClick: "+ nCopies);
+
 
                     }
 
@@ -155,32 +163,20 @@ public class BorrowABook extends AppCompatActivity {
 
                     }
                 });
-                    nCopies--;
-                cref.child("copies").setValue(nCopies);
+
+
+                cref.child("copies").setValue(String.valueOf(nCopies));
 
 
                 if(nCopies<2){
                     nref.child(title).child("availability").setValue("No");
                 }
 
-
-
-
-
-
-
-
                 Toast.makeText(BorrowABook.this, "Transaction Successfully!", Toast.LENGTH_SHORT).show();
                 finish();
 
-
-
             }
         });
-
-
-
-
 
     }
 
