@@ -2,6 +2,7 @@ package com.nandan.modernlibraryusingfirebase;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,39 +69,56 @@ public class SemBookListAdapter extends RecyclerView.Adapter<SemBookListAdapter.
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                if(data.get(position).getTitle().equals("Semester I")) {
+                if (data.get(position).getTitle().equals("Semester I")) {
                     Intent sem1 = new Intent(context, Semester_I_books.class);
                     context.startActivity(sem1);
-                }
-
-                else if (data.get(position).getTitle().equals("Semester II")){
-                Intent sem2 = new Intent(context, Semester_II_books.class);
-                context.startActivity(sem2);
-                }
-
-                else if(data.get(position).getTitle().equals("Semester III")) {
+                } else if (data.get(position).getTitle().equals("Semester II")) {
+                    Intent sem2 = new Intent(context, Semester_II_books.class);
+                    context.startActivity(sem2);
+                } else if (data.get(position).getTitle().equals("Semester III")) {
                     Intent sem3 = new Intent(context, Semester_III_books.class);
                     context.startActivity(sem3);
-                }
-
-                else if(data.get(position).getTitle().equals("Semester IV")) {
+                } else if (data.get(position).getTitle().equals("Semester IV")) {
                     Intent sem4 = new Intent(context, Semester_IV_books.class);
                     context.startActivity(sem4);
-                }
-
-                else if(data.get(position).getTitle().equals("Semester V")) {
+                } else if (data.get(position).getTitle().equals("Semester V")) {
                     Intent sem5 = new Intent(context, Semester_V_books.class);
                     context.startActivity(sem5);
-                }
-
-                else if(data.get(position).getTitle().equals("Semester VI")) {
+                } else if (data.get(position).getTitle().equals("Semester VI")) {
                     Intent sem6 = new Intent(context, Semester_VI_books.class);
                     context.startActivity(sem6);
-                }
+                } else if (data.get(position).getTitle().equals("Miscellaneous")) {
+                    Intent misc = new Intent(context, Misc_Books.class);
+                    context.startActivity(misc);
+                } else if (data.get(position).getTitle().equals("Programming Languages")) {
+                    Intent i1 = new Intent(context, Programming_books.class);
+                    context.startActivity(i1);
 
-                else if(data.get(position).getTitle().equals("Miscellaneous")){
-                Intent misc = new Intent(context, Misc_Books.class);
-                context.startActivity(misc);}
+
+                } else if (data.get(position).getTitle().equals("Database Management System")) {
+                    Intent i2 = new Intent(context, Dbms_books.class);
+                    context.startActivity(i2);
+
+                } else if (data.get(position).getTitle().equals("Algorithms and Data Structures")) {
+                    Intent i3 = new Intent(context, DataStructure_books.class);
+                    context.startActivity(i3);
+                }
+                else if(data.get(position).getTitle().equals("Computer Architecture and Organisation")) {
+                    Intent i4 = new Intent(context, c_architecture_books.class);
+                    context.startActivity(i4);
+                }else if(data.get(position).getTitle().equals("Discrete Mathematics")){
+                    Intent i5 = new Intent(context, Discrete_Maths_books.class);
+                    context.startActivity(i5);
+                }else if(data.get(position).getTitle().equals("Operating System")){
+                    Intent i6 = new Intent(context, OS_books.class);
+                    context.startActivity(i6);
+                }else if(data.get(position).getTitle().equals("Computer Networks")){
+                    Intent i7 = new Intent(context, Networks_books.class);
+                    context.startActivity(i7);
+                }else if(data.get(position).getTitle().equals("System Design")){
+                    Intent i8 = new Intent(context, System_Design_books.class);
+                    context.startActivity(i8);
+                }
 
             }
         });
