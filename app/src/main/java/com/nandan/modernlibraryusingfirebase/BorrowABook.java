@@ -30,8 +30,9 @@ public class BorrowABook extends AppCompatActivity {
     private AutoCompleteTextView acedtxtRollNo;
     ArrayList<String> studentsroll;
     ArrayAdapter<String> adapter;
-    private DatabaseReference mref, nref,bref;
+    private DatabaseReference mref, nref,bref,cref;
     private Button btnFin;
+    int nCopies;
 
     
     @Override
@@ -115,21 +116,38 @@ public class BorrowABook extends AppCompatActivity {
                 String title = txttitle.getText().toString();
                 String roll = txt_roll.getText().toString();
                 bref = FirebaseDatabase.getInstance().getReference("User").child(roll).child("BorrowedBooks");
+
+                 bref.setValue(title);
+
+                 cref=FirebaseDatabase.getInstance().getReference("Books").child(title);
                // Query query = mref.child(roll).child("BorrowedBooks");
-                bref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                bref.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+//
+//                        for (DataSnapshot data:snapshot.getChildren())
+//                        {
+//                            DataSnapshot  Borrow_1 = data.child("Borrow_1");
+//                            String Borrow1 = Borrow_1.getValue(String.class);
+//
+//                            if(Borrow1 == null)
+//                            {
+//                                 data.child("Borrow_1").getRef().setValue(title);
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
+//
+//                    }
+//                });
+
+                    cref.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                        nCopies = (int) snapshot.child("copies").getValue();
 
-                        for (DataSnapshot data:snapshot.getChildren())
-                        {
-                            DataSnapshot  Borrow_1 = data.child("Borrow_1");
-                            String Borrow1 = Borrow_1.getValue(String.class);
-
-                            if(Borrow1 == null)
-                            {
-                                 data.child("Borrow_1").getRef().setValue(title);
-                            }
-                        }
                     }
 
                     @Override
@@ -137,8 +155,20 @@ public class BorrowABook extends AppCompatActivity {
 
                     }
                 });
-                nref.child(title).child("availability").setValue("No");
-            //    mref.child(roll).child("BorrowedBooks").child("Borrow");
+                    nCopies--;
+                cref.child("copies").setValue(nCopies);
+
+
+                if(nCopies<2){
+                    nref.child(title).child("availability").setValue("No");
+                }
+
+
+
+
+
+
+
 
                 Toast.makeText(BorrowABook.this, "Transaction Successfully!", Toast.LENGTH_SHORT).show();
                 finish();

@@ -86,8 +86,8 @@ public class Register extends AppCompatActivity {
                 } else {
                     registerUser(txt_email, txt_password);
                     storeUserData();
-                    user_node.child(txt_rollNo).child("BorrowedBooks").child("Borrow_1").setValue("null");
-                    user_node.child(txt_rollNo).child("BorrowedBooks").child("Borrow_2").setValue("null");
+                    user_node.child(txt_rollNo).child("BorrowedBooks").setValue("null");
+                    //user_node.child(txt_rollNo).child("BorrowedBooks").child("Borrow_2").setValue("null");
 
                 }
 
