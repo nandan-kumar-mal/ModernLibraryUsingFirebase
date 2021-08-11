@@ -25,13 +25,13 @@
 
     <string-array name="Topics">
         <item>Programming Language</item>
-        <item>Operating system</item>
+        <item>Database Management System</item>
+        <item>Operating System</item>
         <item>Discrete Mathematics</item>
-        <item>Software Engineering</item>
-        <item>Artificial Intelligence</item>
+        <item>Computer Architecture</item>
         <item>Computer Networking</item>
         <item>System Design</item>
-        <item>Linux Operating System</item>
+        <item>Data Structure and Algorithm</item>
     </string-array>
 
 

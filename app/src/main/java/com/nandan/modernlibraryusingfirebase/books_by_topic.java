@@ -77,46 +77,52 @@ public class books_by_topic extends Fragment {
     {
         ArrayList<Model> container = new ArrayList<>();
         Model obj1 = new Model();
-        obj1.setTitle("Semester I");
+        obj1.setTitle("Programming Languages");
         obj1.setDesc("All the books under this topic");
         obj1.setImgname(R.drawable.book138);
         container.add(obj1);
 
 
         Model obj2 = new Model();
-        obj2.setTitle("Semester II");
+        obj2.setTitle("Database Management System");
         obj2.setDesc("All the books under this topic");
         obj2.setImgname(R.drawable.sem2);
         container.add(obj2);
 
         Model obj3 = new Model();
-        obj3.setTitle("Semester III");
+        obj3.setTitle("Algorithms and Data Structures");
         obj3.setDesc("All the books under this topic");
         obj3.setImgname(R.drawable.book138);
         container.add(obj3);
 
         Model obj4 = new Model();
-        obj4.setTitle("Semester IV");
+        obj4.setTitle("Computer Architecture and Organisation");
         obj4.setDesc("All the books under this topic");
         obj4.setImgname(R.drawable.book138);
         container.add(obj4);
 
         Model obj5 = new Model();
-        obj5.setTitle("Semester V");
+        obj5.setTitle("Discrete Mathematics");
         obj5.setDesc("All the books under this topic");
         obj5.setImgname(R.drawable.book138);
         container.add(obj5);
 
         Model obj6 = new Model();
-        obj6.setTitle("Semester VI");
+        obj6.setTitle("Operating System");
         obj6.setDesc("All the books under this topic");
         obj6.setImgname(R.drawable.book138);
         container.add(obj6);
 
         Model obj7 = new Model();
-        obj7.setTitle("Miscellaneous");
-        obj7.setDesc("Miscellaneous books.");
+        obj7.setTitle("Computer Networks");
+        obj7.setDesc("All the books under this topic");
         obj7.setImgname(R.drawable.misc);
+        container.add(obj7);
+
+        Model obj8 = new Model();
+        obj8.setTitle("System Design");
+        obj8.setDesc("All the books under this topic");
+        obj8.setImgname(R.drawable.misc);
         container.add(obj7);
 
         return container;
