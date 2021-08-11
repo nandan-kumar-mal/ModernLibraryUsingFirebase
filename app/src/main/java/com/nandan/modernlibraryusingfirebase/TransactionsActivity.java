@@ -58,7 +58,7 @@ public class TransactionsActivity extends AppCompatActivity {
         btnBor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = "master";
+                String title = "C";
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
 
                 Query checkBook = reference.orderByChild("title").equalTo(title);
@@ -99,7 +99,7 @@ public class TransactionsActivity extends AppCompatActivity {
         btnRetn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = "master";
+                String title = resultData.getText().toString();
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
 
                 Query checkBook = reference.orderByChild("title").equalTo(title);
