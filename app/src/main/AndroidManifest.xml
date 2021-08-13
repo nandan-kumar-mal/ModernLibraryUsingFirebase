@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nandan.modernlibraryusingfirebase">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera2.full" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,16 +18,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ModernLibraryUsingFirebase">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Register" />
-        <activity android:name=".Login" />
-        <activity android:name=".activity_start">
+        <activity android:name=".BookCategory"></activity>
+        <activity android:name=".ReturnABook" />
+        <activity android:name=".BorrowABook" />
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".BooksDetailsAdd" />
+        <activity android:name=".Misc_Books" />
+        <activity android:name=".Semester_VI_books" />
+        <activity android:name=".Semester_V_books" />
+        <activity android:name=".Semester_IV_books" />
+        <activity android:name=".Semester_III_books" />
+        <activity android:name=".Semester_II_books" />
+        <activity android:name=".Semester_I_books" />
+        <activity android:name=".TransactionsActivity" />
+        <activity android:name=".About_us" />
+        <activity android:name=".BookAdd" />
+        <activity android:name=".Booklist" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Register"/>
+
+
+
+
+
+
+        <activity android:name=".Login" />
+        <activity android:name=".activity_welcome" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
