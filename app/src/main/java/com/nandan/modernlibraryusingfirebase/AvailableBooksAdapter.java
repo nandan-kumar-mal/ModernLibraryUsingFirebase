@@ -39,6 +39,9 @@ public class AvailableBooksAdapter extends RecyclerView.Adapter<AvailableBooksAd
         holder.txtBookName.setText(contact.getTitle());
         holder.txtAuthor.setText(contact.getAuthor());
         holder.txtAvailabitilty.setText(contact.getAvailability());
+        holder.txtnoCopy.setText(contact.getCopies());
+
+
 
         holder.parent2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +68,8 @@ public class AvailableBooksAdapter extends RecyclerView.Adapter<AvailableBooksAd
         private TextView txtAuthor;
        private TextView txtAvailabitilty;
         private CardView parent2;
+        private TextView txtnoCopy;
+
         
 
         public ViewHolder(@NonNull View itemView) {
@@ -74,6 +79,12 @@ public class AvailableBooksAdapter extends RecyclerView.Adapter<AvailableBooksAd
             txtAvailabitilty = itemView.findViewById(R.id.availability);
             parent2 = itemView.findViewById(R.id.parent2);
             bookIcon = itemView.findViewById(R.id.bookImg);
+            txtnoCopy = itemView.findViewById(R.id.copiesAvailability);
+
+
+
+
+
 
         }
 

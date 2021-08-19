@@ -80,6 +80,16 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="20dp"
                     />
+                <TextView
+                    android:id="@+id/Copies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Categ"
+                    android:text="Copies"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
 
                 <TextView
                     android:id="@+id/Title"
@@ -126,7 +136,17 @@
                     android:layout_marginLeft="70dp"
                     android:layout_marginTop="20dp"
                     />
-
+                <TextView
+                    android:id="@+id/nCopies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Categ"
+                    android:layout_toRightOf="@+id/txt_title"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginTop="20dp"
+                    />
 
 
 

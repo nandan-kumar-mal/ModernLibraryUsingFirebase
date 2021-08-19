@@ -36,7 +36,7 @@ public class TransactionsActivity extends AppCompatActivity {
     TextView resultData;
     Button btnBor, btnRetn;
     ImageView imgClose;
-
+    String copy;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,35 +58,45 @@ public class TransactionsActivity extends AppCompatActivity {
         btnBor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = "master";
+                String title = "C";
+
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
 
                 Query checkBook = reference.orderByChild("title").equalTo(title);
                 checkBook.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
+                        copy = snapshot.child(title).child("copies").getValue(String.class);
+                        if(snapshot.exists()&& Integer.parseInt(copy)>=2){
                             String author = snapshot.child(title).child("author").getValue(String.class);
                             String category = snapshot.child(title).child("category").getValue(String.class);
                             String edition = snapshot.child(title).child("edition").getValue(String.class);
+
 
                             Intent intent = new Intent(getApplicationContext(), BorrowABook.class);
                             intent.putExtra("title", title);
                             intent.putExtra("author", author);
                             intent.putExtra("edition", edition);
                             intent.putExtra("category", category);
-                            startActivity(intent);
+                            intent.putExtra("copies", copy);
 
+
+                            Toast.makeText(getApplicationContext(), "Book is available ", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
                         }
+                        else if (Integer.parseInt(copy)<2) {
+                            Toast.makeText(getApplicationContext(), "Book is out of stock!", Toast.LENGTH_SHORT).show();
+                        }
+
                         else{
-                            Toast.makeText(TransactionsActivity.this, "Book is not available", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TransactionsActivity.this, "Book is not available! ", Toast.LENGTH_SHORT).show();
 
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(TransactionsActivity.this, "Book is not available", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransactionsActivity.this, "Book is not available!", Toast.LENGTH_SHORT).show();
 
 
                     }
@@ -99,7 +109,7 @@ public class TransactionsActivity extends AppCompatActivity {
         btnRetn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = "master";
+                String title = "C";
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
 
                 Query checkBook = reference.orderByChild("title").equalTo(title);
@@ -110,24 +120,31 @@ public class TransactionsActivity extends AppCompatActivity {
                             String author = snapshot.child(title).child("author").getValue(String.class);
                             String category = snapshot.child(title).child("category").getValue(String.class);
                             String edition = snapshot.child(title).child("edition").getValue(String.class);
+                            copy = snapshot.child(title).child("copies").getValue(String.class);
+
+
 
                             Intent intent = new Intent(getApplicationContext(), ReturnABook.class);
                             intent.putExtra("title", title);
                             intent.putExtra("author", author);
                             intent.putExtra("edition", edition);
                             intent.putExtra("category", category);
+                            intent.putExtra("copies", copy);
+
+
+
                             startActivity(intent);
 
                         }
                         else{
-                            Toast.makeText(TransactionsActivity.this, "Book is not available", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(TransactionsActivity.this, "Book is not available!", Toast.LENGTH_SHORT).show();
 
                         }
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(TransactionsActivity.this, "Book is not available", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TransactionsActivity.this, "Book is not available!", Toast.LENGTH_SHORT).show();
 
 
                     }
