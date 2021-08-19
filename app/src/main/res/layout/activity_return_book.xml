@@ -126,6 +126,27 @@
                     android:layout_marginLeft="70dp"
                     android:layout_marginTop="20dp"
                     />
+                <TextView
+                    android:id="@+id/Copies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_Categ"
+                    android:text="Copies"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:id="@+id/nCopies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/r_Categ"
+                    android:layout_toRightOf="@+id/Copies"
+                    android:text="None"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    />
 
 
 

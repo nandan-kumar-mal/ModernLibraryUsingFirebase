@@ -1,9 +1,19 @@
 package com.nandan.modernlibraryusingfirebase;
 
 public class Contact {
-    String title, icon, author, availability;
+    String title, icon, author, availability, copies;
 
-    public Contact(){}
+
+    public Contact() {
+    }
+    public String getCopies() {
+        return copies;
+    }
+
+    public void setCopies(String copies) {
+        this.copies = copies;
+    }
+
 
     public void setAvailability(String availability) {
         this.availability = availability;
@@ -25,11 +35,12 @@ public class Contact {
         this.author = author;
     }
 
-    public Contact(String title, String icon, String author, String availability) {
+    public Contact(String title, String icon, String author, String availability,String Copies) {
         this.title = title;
         this.icon = icon;
         this.author = author;
         this.availability = availability;
+        this.copies= copies;
     }
 
     public String getTitle() {
@@ -43,8 +54,6 @@ public class Contact {
     public String getIcon() {
         return icon;
     }
-
-
 
 
 }

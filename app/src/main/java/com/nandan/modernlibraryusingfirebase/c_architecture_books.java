@@ -36,7 +36,7 @@ public class c_architecture_books extends AppCompatActivity {
         contacts = new ArrayList<>();
         database = FirebaseDatabase.getInstance().getReference("Books");
         Query query = FirebaseDatabase.getInstance().getReference("Books")
-                .orderByChild("category").equalTo("Semester I");
+                .orderByChild("topic").equalTo("Computer Architecture");
        query.addListenerForSingleValueEvent(valueEventListener);
   //      database.addListenerForSingleValueEvent(valueEventListener);
 

@@ -20,17 +20,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 public class ReturnABook extends AppCompatActivity {
 
-    private TextView txttitle, txtauthor, txtcategory, txtedition,txt_name,txt_roll,txt_year;
+    private TextView txttitle, txtauthor, txtcategory, txtedition,txt_name,txt_roll,txt_year,Copy,nCopy;
     private AutoCompleteTextView acedtxtRollNo;
     ArrayList<String> studentsroll;
     ArrayAdapter<String> adapter;
-    private DatabaseReference mref, nref,bref;
+    private DatabaseReference mref, nref,bref,cref;
     private Button btnFin;
 
 
@@ -48,6 +46,8 @@ public class ReturnABook extends AppCompatActivity {
         txt_roll=findViewById(R.id.r_RollNo);
         txt_year=findViewById(R.id.r_Year);
         btnFin=findViewById(R.id.r_btn_Finish);
+        Copy=findViewById(R.id.Copies);
+        nCopy=findViewById(R.id.nCopies);
 
 
 
@@ -94,10 +94,17 @@ public class ReturnABook extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot rollSnapshot: snapshot.getChildren()){
 
-                    studentsroll.add(rollSnapshot.child("rollNo").getValue().toString());
+                    try {
+                        studentsroll.add(rollSnapshot.child("rollNo").getValue().toString());
+
+
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e);
+                    }
+
                     adapter.notifyDataSetChanged();
-
-
 
                 }
             }
@@ -115,29 +122,19 @@ public class ReturnABook extends AppCompatActivity {
                 String title = txttitle.getText().toString();
                 String roll = txt_roll.getText().toString();
                 bref = FirebaseDatabase.getInstance().getReference("User").child(roll).child("BorrowedBooks");
+                cref=FirebaseDatabase.getInstance().getReference("Books").child(title);
                 // Query query = mref.child(roll).child("BorrowedBooks");
-                bref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                bref.setValue("null");
 
-                        for (DataSnapshot data:snapshot.getChildren())
-                        {
-                            DataSnapshot  Borrow_1 = data.child("Borrow_1");
-                            String Borrow1 = Borrow_1.getValue(String.class);
+                String rCopy = nCopy.getText().toString();
+                int iCopy = Integer.parseInt(rCopy);
+                iCopy++;
 
-                            if(Borrow1 == null)
-                            {
-                                data.child("Borrow_1").getRef().setValue(title);
-                            }
-                        }
-                    }
+                cref.child("copies").setValue(String.valueOf(iCopy));
 
-                    @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
 
-                    }
-                });
-                nref.child(title).child("availability").setValue("No");
+
+                nref.child(title).child("availability").setValue("Yes");
                 //    mref.child(roll).child("BorrowedBooks").child("Borrow");
 
                 Toast.makeText(ReturnABook.this, "Returned Successfully!", Toast.LENGTH_SHORT).show();
@@ -160,11 +157,13 @@ public class ReturnABook extends AppCompatActivity {
         String bookauthor = intent.getStringExtra("author");
         String bookedition = intent.getStringExtra("edition");
         String bookcategory = intent.getStringExtra("category");
+        String bookcopy = intent.getStringExtra("copies");
 
         txttitle.setText(booktitle);
         txtauthor.setText(bookauthor);
         txtedition.setText(bookedition);
         txtcategory.setText(bookcategory);
+        nCopy.setText(bookcopy);
 
     }
 

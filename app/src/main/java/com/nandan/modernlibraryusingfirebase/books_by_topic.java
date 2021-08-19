@@ -1,14 +1,13 @@
 package com.nandan.modernlibraryusingfirebase;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
@@ -116,14 +115,14 @@ public class books_by_topic extends Fragment {
         Model obj7 = new Model();
         obj7.setTitle("Computer Networks");
         obj7.setDesc("All the books under this topic");
-        obj7.setImgname(R.drawable.misc);
+        obj7.setImgname(R.drawable.book138);
         container.add(obj7);
 
         Model obj8 = new Model();
         obj8.setTitle("System Design");
         obj8.setDesc("All the books under this topic");
-        obj8.setImgname(R.drawable.misc);
-        container.add(obj7);
+        obj8.setImgname(R.drawable.book138);
+        container.add(obj8);
 
         return container;
 

@@ -21,13 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 
 public class BorrowABook extends AppCompatActivity {
 
-    private TextView txttitle, txtauthor, txtcategory, txtedition,txt_name,txt_roll,txt_year;
+    private TextView txttitle, txtauthor, txtcategory, txtedition,txt_name,txt_roll,txt_year,Copy,nCopy;
     private AutoCompleteTextView acedtxtRollNo;
     ArrayList<String> studentsroll;
     ArrayAdapter<String> adapter;
@@ -50,6 +48,8 @@ public class BorrowABook extends AppCompatActivity {
         txt_roll=findViewById(R.id.RollNo);
         txt_year=findViewById(R.id.Year);
         btnFin=findViewById(R.id.btn_Finish);
+        Copy= findViewById(R.id.Copies);
+        nCopy= findViewById(R.id.nCopies);
 
 
 
@@ -96,7 +96,15 @@ public class BorrowABook extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot rollSnapshot: snapshot.getChildren()){
 
-                    studentsroll.add(rollSnapshot.child("rollNo").getValue().toString());
+                    try {
+                        studentsroll.add(rollSnapshot.child("rollNo").getValue().toString());
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e);
+                    }
+
+
                     adapter.notifyDataSetChanged();
 
 
@@ -119,10 +127,10 @@ public class BorrowABook extends AppCompatActivity {
                 String title = txttitle.getText().toString();
                 String roll = txt_roll.getText().toString();
                 bref = FirebaseDatabase.getInstance().getReference("User").child(roll).child("BorrowedBooks");
+                bref.setValue(title);
 
-                 bref.setValue(title);
+               cref=FirebaseDatabase.getInstance().getReference("Books").child(title);
 
-                 cref=FirebaseDatabase.getInstance().getReference("Books").child(title);
 
                // Query query = mref.child(roll).child("BorrowedBooks");
 //                bref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -147,30 +155,25 @@ public class BorrowABook extends AppCompatActivity {
 //                    }
 //                });
 
-                    cref.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                        nCopies =  snapshot.child("copies").getValue(Integer.class);
-                        Log.d("no of copies", "onDataChange: "+ nCopies);
-                        nCopies = nCopies-1;
-                        Log.d("noOf copies onDecrement", "onClick: "+ nCopies);
+                 String rCopy = nCopy.getText().toString();
+                 int iCopy = Integer.parseInt(rCopy);
+                 iCopy--;
+                cref.child("copies").setValue(String.valueOf(iCopy));
 
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                    }
-                });
-
-
-                cref.child("copies").setValue(String.valueOf(nCopies));
-
-
-                if(nCopies<2){
+                if(iCopy<2)
+                {
                     nref.child(title).child("availability").setValue("No");
                 }
+
+                else
+                {
+                    nref.child(title).child("availability").setValue("Yes");
+                }
+
+
+
+
+
 
                 Toast.makeText(BorrowABook.this, "Transaction Successfully!", Toast.LENGTH_SHORT).show();
                 finish();
@@ -186,11 +189,15 @@ public class BorrowABook extends AppCompatActivity {
         String bookauthor = intent.getStringExtra("author");
         String bookedition = intent.getStringExtra("edition");
         String bookcategory = intent.getStringExtra("category");
+        String bookcopy = intent.getStringExtra("copies");
+
+
 
         txttitle.setText(booktitle);
         txtauthor.setText(bookauthor);
         txtedition.setText(bookedition);
         txtcategory.setText(bookcategory);
+        nCopy.setText(bookcopy);
 
     }
 

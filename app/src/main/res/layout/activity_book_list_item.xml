@@ -43,12 +43,32 @@
 
             />
         <TextView
+            android:id="@+id/copiesAvailable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/author"
+            android:layout_toRightOf="@id/bookImg"
+            android:layout_marginTop="8dp"
+            android:text="Copies available: "
+            android:textSize="16sp"
+
+            />
+        <TextView
+            android:id="@+id/copiesAvailability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/availability"
+            android:layout_toRightOf="@id/copiesAvailable"
+            android:layout_alignBaseline="@id/copiesAvailable"
+            android:layout_alignParentEnd="true"/>
+
+        <TextView
             android:id="@+id/available"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Availability: "
             android:layout_toRightOf="@id/bookImg"
-            android:layout_below="@+id/author"
+            android:layout_below="@+id/copiesAvailable"
             android:layout_marginTop="8dp"
             android:textSize="16sp"
 
@@ -63,26 +83,8 @@
             tools:text="NO"
             />
 
-        <TextView
-            android:id="@+id/copiesAvailable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/available"
-            android:layout_toRightOf="@id/bookImg"
-            android:layout_marginTop="8dp"
-            android:text="Copies available: "
-            android:textSize="16sp"
-            />
-        <TextView
-            android:id="@+id/copiesAvailability"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/availability"
-            android:layout_toRightOf="@id/copiesAvailable"
-            android:layout_alignBaseline="@id/copiesAvailable"
-            android:layout_alignParentEnd="true"
 
-            />
+
 
 
 
