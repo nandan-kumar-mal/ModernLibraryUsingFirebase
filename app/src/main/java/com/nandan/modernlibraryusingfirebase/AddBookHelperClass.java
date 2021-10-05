@@ -1,13 +1,7 @@
 package com.nandan.modernlibraryusingfirebase;
 
 public class AddBookHelperClass {
-    String title;
-    String author;
-    String edition;
-    String category;
-    String icon;
-    String copies;
-    String topic;
+    String title, author,  edition, category,icon,copies;
 
     public AddBookHelperClass() {
 
@@ -15,22 +9,13 @@ public class AddBookHelperClass {
 
 
 
-    public AddBookHelperClass(String title, String author, String category, String edition, String icon, String copies,String topic) {
+    public AddBookHelperClass(String title, String author, String category, String edition, String icon, String copies) {
         this.title = title;
         this.author = author;
        this.category = category;
         this.edition = edition;
         this.icon = icon;
         this.copies = copies;
-        this.topic=topic;
-    }
-
-    public String getTopic() {
-        return topic;
-    }
-
-    public void setTopic(String topic) {
-        this.topic = topic;
     }
 
     public String getCopies() {   return copies;  }

@@ -32,7 +32,6 @@ public class c_architecture_books extends AppCompatActivity {
         setContentView(R.layout.activity_semester__i_books);
         contactRecView = findViewById(R.id.booksRecView);
         contactRecView.setHasFixedSize(true);
-
         contacts = new ArrayList<>();
         database = FirebaseDatabase.getInstance().getReference("Books");
         Query query = FirebaseDatabase.getInstance().getReference("Books")

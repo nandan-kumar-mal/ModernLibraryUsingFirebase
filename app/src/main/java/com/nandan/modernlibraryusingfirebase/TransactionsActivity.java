@@ -110,7 +110,7 @@ public class TransactionsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String title = "C"
+                String title = "C";
                
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
 
