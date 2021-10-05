@@ -28,7 +28,7 @@ public class BorrowABook extends AppCompatActivity {
     private AutoCompleteTextView acedtxtRollNo;
     ArrayList<String> studentsroll;
     ArrayAdapter<String> adapter;
-    private DatabaseReference mref, nref,bref,cref;
+    private DatabaseReference mref, nref,bref,cref,href;
     private Button btnFin;
 
 
@@ -127,6 +127,7 @@ public class BorrowABook extends AppCompatActivity {
                 bref.setValue(title);
 
                cref=FirebaseDatabase.getInstance().getReference("Books").child(title);
+
 
                // Query query = mref.child(roll).child("BorrowedBooks");
 //                bref.addListenerForSingleValueEvent(new ValueEventListener() {

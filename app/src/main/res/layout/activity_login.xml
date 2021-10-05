@@ -89,22 +89,25 @@
             android:orientation="horizontal">
 
             <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/rememberMe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/Widget.AppCompat.CompoundButton.CheckBox"
                 android:text="Remember me"
                 android:buttonTint="@color/black"/>
 
-            <com.google.android.material.button.MaterialButton
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/loginAsAdmin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:text="Login as Admin"
                 android:layout_alignParentRight="true"
-                android:text="Forgot password"
-                android:textColor="@color/black"/>
+                android:buttonTint="@color/black"/>
 
 
-</RelativeLayout>
+
+        </RelativeLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/LoginBtn"
