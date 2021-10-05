@@ -206,6 +206,7 @@
         android:layout_height="wrap_content"
         android:text="No of copies"
         android:textSize="20sp"
+        android:inputType="number"
         app:layout_constraintBaseline_toBaselineOf="@+id/No_of_copies"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 

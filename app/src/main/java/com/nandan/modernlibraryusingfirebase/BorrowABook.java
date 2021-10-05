@@ -3,6 +3,7 @@ package com.nandan.modernlibraryusingfirebase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -119,6 +120,8 @@ public class BorrowABook extends AppCompatActivity {
         });
 
         btnFin.setOnClickListener(new View.OnClickListener() {
+            Integer nCopies;
+
             @Override
             public void onClick(View v) {
                 String title = txttitle.getText().toString();
@@ -152,26 +155,6 @@ public class BorrowABook extends AppCompatActivity {
 //                    }
 //                });
 
-//                    cref.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-//                        nCopies = snapshot.child("copies").getValue();
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull @NotNull DatabaseError error) {
-//
-//                    }
-//                });
-//                    nCopies--;
-
-//
-//
-//                if(nCopies<2){
-//
-//                }
-//
                  String rCopy = nCopy.getText().toString();
                  int iCopy = Integer.parseInt(rCopy);
                  iCopy--;
@@ -181,6 +164,7 @@ public class BorrowABook extends AppCompatActivity {
                 {
                     nref.child(title).child("availability").setValue("No");
                 }
+
                 else
                 {
                     nref.child(title).child("availability").setValue("Yes");
@@ -190,17 +174,12 @@ public class BorrowABook extends AppCompatActivity {
 
 
 
+
                 Toast.makeText(BorrowABook.this, "Transaction Successfully!", Toast.LENGTH_SHORT).show();
                 finish();
 
-
-
             }
         });
-
-
-
-
 
     }
 

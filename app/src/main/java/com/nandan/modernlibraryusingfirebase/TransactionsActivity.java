@@ -109,7 +109,9 @@ public class TransactionsActivity extends AppCompatActivity {
         btnRetn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String title = "C";
+
+                String title = "C"
+               
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Books");
 
                 Query checkBook = reference.orderByChild("title").equalTo(title);
