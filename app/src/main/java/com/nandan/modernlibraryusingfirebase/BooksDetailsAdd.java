@@ -152,7 +152,7 @@ public class BooksDetailsAdd extends AppCompatActivity {
                         public void onSuccess(Uri uri) {
                             rootNode = FirebaseDatabase.getInstance();
                             reference = rootNode.getReference("Books");
-                            AddBookHelperClass helperClass = new AddBookHelperClass(txt_title, txt_Author, txt_Cat, txt_Edtion,uri.toString(),No_Of_Copies,cTopic);
+                            AddBookHelperClass helperClass = new AddBookHelperClass(txt_title, txt_Author, txt_Cat, txt_Edtion,uri.toString(),No_Of_Copies);
                             reference.child(txt_title).setValue(helperClass);
                             reference.child(txt_title).child("availability").setValue("Yes");
 
