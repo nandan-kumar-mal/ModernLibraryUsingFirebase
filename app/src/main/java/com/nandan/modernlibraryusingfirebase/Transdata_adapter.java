@@ -36,7 +36,7 @@ public class Transdata_adapter extends RecyclerView.Adapter<Transdata_adapter.Tr
         Transdata transdata = list.get(position);
         holder.name.setText(transdata.getName());
         holder.roll.setText(transdata.getRoll());
-        holder.sem.setText(transdata.getSem());
+        holder.sem.setText(transdata.getYear());
         holder.book.setText(transdata.getBook());
         holder.date.setText(transdata.getDate());
 

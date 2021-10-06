@@ -1,11 +1,11 @@
 package com.nandan.modernlibraryusingfirebase;
 
+import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,7 +30,7 @@ public class transactions_record extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transactions_record);
         recyclerView = findViewById(R.id.transrecview);
-        dbRef = FirebaseDatabase.getInstance().getReference("Transactions");
+        dbRef = FirebaseDatabase.getInstance().getReference("TransactionsRec");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      private Toolbar toolbar;
      private NavigationView naviView;
      private DrawerLayout drawer;
-     private CardView cardTrans, cardAbout, cardAdd, cardBooklist;
+     private CardView cardTrans, cardAbout, cardAdd, cardBooklist,cardTransRec;
     private ImageView menuIcon;
 
 
@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cardBooklist = findViewById(R.id.cardBooklist);
         cardAdd = findViewById(R.id.cardAdd);
         cardAbout = findViewById(R.id.cardAbout);
+        cardTransRec=findViewById(R.id.cardRec);
 
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         cardAbout.setOnClickListener(this);
         cardAdd.setOnClickListener(this);
         cardBooklist.setOnClickListener(this);
+        cardTransRec.setOnClickListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -115,6 +117,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case R.id.cardAbout:
                 i = new Intent(this, About_us.class);
+                startActivity(i);
+                break;
+            case R.id.cardRec:
+                i = new Intent(this, transactions_record.class);
                 startActivity(i);
                 break;
 

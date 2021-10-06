@@ -3,7 +3,6 @@ package com.nandan.modernlibraryusingfirebase;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,7 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class BorrowABook extends AppCompatActivity {
 
@@ -61,6 +62,8 @@ public class BorrowABook extends AppCompatActivity {
 
         mref = FirebaseDatabase.getInstance().getReference("User");
         nref = FirebaseDatabase.getInstance().getReference("Books");
+        href = FirebaseDatabase.getInstance().getReference("TransactionsRec");
+
 
 
         acedtxtRollNo.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -169,7 +172,7 @@ public class BorrowABook extends AppCompatActivity {
                 {
                     nref.child(title).child("availability").setValue("Yes");
                 }
-
+                transRecord();
 
 
 
@@ -199,6 +202,26 @@ public class BorrowABook extends AppCompatActivity {
         txtcategory.setText(bookcategory);
         nCopy.setText(bookcopy);
 
+    }
+
+    private void transRecord(){
+        long etmilli=System.currentTimeMillis();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy", Locale.getDefault());
+        SimpleDateFormat stf = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+        String date = sdf.format(etmilli);
+        String time = stf.format(etmilli);
+        String dt= date+" "+time;
+
+        String dataName=txt_name.getText().toString();
+        String dataRoll=txt_roll.getText().toString();
+        String dataYear=txt_year.getText().toString();
+        String dataBookName=txttitle.getText().toString();
+        String dataDate=dt;
+
+
+
+        Transdata data = new Transdata(dataName,dataRoll,dataYear,dataBookName,dataDate);
+        href.push().setValue(data);
     }
 
 

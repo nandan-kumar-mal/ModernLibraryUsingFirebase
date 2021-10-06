@@ -72,7 +72,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Semester : "
+                android:text="Year: "
                 android:textSize="14sp"
                 android:textColor="@color/black"
 
@@ -81,7 +81,7 @@
                 android:id="@+id/borr_sem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1st Sem"
+                android:text="1st Year"
                 android:textSize="14sp"
                 android:textColor="@color/black"
 

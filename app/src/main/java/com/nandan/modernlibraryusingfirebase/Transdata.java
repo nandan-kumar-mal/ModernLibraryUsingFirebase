@@ -1,17 +1,18 @@
 package com.nandan.modernlibraryusingfirebase;
 
 public class Transdata {
-    String name, roll, sem, book, date;
+    String name, roll, year, book, date;
 
-    public Transdata(String name, String roll, String sem, String book, String date) {
+    public Transdata(String name, String roll, String year, String book, String date) {
 
         this.name = name;
         this.roll = roll;
-        this.sem = sem;
+        this.year = year;
         this.book = book;
         this.date = date;
     }
 
+    public Transdata() {}
     public String getName() {
         return name;
     }
@@ -28,12 +29,12 @@ public class Transdata {
         this.roll = roll;
     }
 
-    public String getSem() {
-        return sem;
+    public String getYear() {
+        return year;
     }
 
-    public void setSem(String sem) {
-        this.sem = sem;
+    public void setYear(String year) {
+        this.year = year;
     }
 
     public String getBook() {
