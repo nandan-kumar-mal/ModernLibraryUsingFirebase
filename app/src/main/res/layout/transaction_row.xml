@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    android:layout_margin="16dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name : "
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+            <TextView
+                android:id="@+id/borr_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adam Paul"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Roll No : "
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+            <TextView
+                android:id="@+id/bor_roll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8336"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Year: "
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+            <TextView
+                android:id="@+id/borr_sem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1st Year"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Book : "
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+            <TextView
+                android:id="@+id/borr_book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Python Programming"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date and Time : "
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+            <TextView
+                android:id="@+id/bor_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="26-08-99"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+
+                />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

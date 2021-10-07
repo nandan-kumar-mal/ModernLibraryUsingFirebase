@@ -21,12 +21,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
+public class UserActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
-     private Toolbar toolbar;
-     private NavigationView naviView;
-     private DrawerLayout drawer;
-     private CardView cardTrans, cardAbout, cardAdd, cardBooklist,cardTransRec;
+    private Toolbar toolbar;
+    private NavigationView naviView;
+    private DrawerLayout drawer;
+    private CardView cardTrans, cardAbout, cardAdd, cardBooklist;
     private ImageView menuIcon;
 
 
@@ -36,17 +36,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.user_activity);
         menuIcon = findViewById(R.id.navicon);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         naviView = findViewById(R.id.nav_view);
         drawer = findViewById(R.id.drawer_layout);
-        cardTrans = findViewById(R.id.cardTrans);
         cardBooklist = findViewById(R.id.cardBooklist);
-        cardAdd = findViewById(R.id.cardAdd);
         cardAbout = findViewById(R.id.cardAbout);
-        cardTransRec=findViewById(R.id.cardRec);
 
         menuIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,11 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 drawer.openDrawer(GravityCompat.START);
             }
         });
-        cardTrans.setOnClickListener(this);
+
         cardAbout.setOnClickListener(this);
-        cardAdd.setOnClickListener(this);
         cardBooklist.setOnClickListener(this);
-        cardTransRec.setOnClickListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
@@ -70,10 +65,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-            
+
 
     }
-    
+
 
     @Override
     public void onBackPressed() {
@@ -92,35 +87,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         }
                     } ).create().show();
 
+        }
     }
-}
 
     @Override
     public void onClick(View v) {
 
         Intent i;
         switch(v.getId()){
-            case R.id.cardTrans:
-                i = new Intent(this, TransactionsActivity.class);
-                startActivity(i);
-                break;
+
 
             case R.id.cardBooklist:
                 i = new Intent(this, BookCategory.class);
                 startActivity(i);
                 break;
 
-            case R.id.cardAdd:
-                i = new Intent(this, BookAdd.class);
-                startActivity(i);
-                break;
+
 
             case R.id.cardAbout:
                 i = new Intent(this, About_us.class);
-                startActivity(i);
-                break;
-            case R.id.cardRec:
-                i = new Intent(this, transactions_record.class);
                 startActivity(i);
                 break;
 

@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ModernLibraryUsingFirebase">
-        <activity android:name=".BookCategory"></activity>
+        <activity android:name=".transactions_record"></activity>
+        <activity android:name=".BookCategory" />
         <activity android:name=".ReturnABook" />
         <activity android:name=".BorrowABook" />
         <activity android:name=".Splash">
@@ -41,24 +42,18 @@
         <activity android:name=".BookAdd" />
         <activity android:name=".Booklist" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Register"/>
-        <activity android:name=".DataStructure_books"/>
-        <activity android:name=".c_architecture_books"/>
-        <activity android:name=".Dbms_books"/>
-        <activity android:name=".Discrete_Maths_books"/>
-        <activity android:name=".Networks_books"/>
-        <activity android:name=".System_Design_books"/>
-        <activity android:name=".OS_books"/>
-        <activity android:name=".Programming_books"/>
-
-
-
-
-
-
-
+        <activity android:name=".Register" />
+        <activity android:name=".DataStructure_books" />
+        <activity android:name=".c_architecture_books" />
+        <activity android:name=".Dbms_books" />
+        <activity android:name=".Discrete_Maths_books" />
+        <activity android:name=".Networks_books" />
+        <activity android:name=".System_Design_books" />
+        <activity android:name=".OS_books" />
+        <activity android:name=".Programming_books" />
         <activity android:name=".Login" />
         <activity android:name=".activity_welcome" />
+        <activity android:name=".UserActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
