@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    tools:context=".BooksDetailsAdd">
+
+    <TextView
+        android:id="@+id/txtBookDet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/candal"
+        android:gravity="clip_horizontal|clip_vertical|center_horizontal|fill_vertical"
+        android:text="Book Details"
+        android:textColor="#3F51B5"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Title"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtBookName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBookDet"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <EditText
+        android:id="@+id/edtxtAuth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/spin"
+        app:layout_constraintStart_toStartOf="@+id/txtBookName"
+        app:layout_constraintTop_toBottomOf="@+id/txtBookName" />
+
+    <TextView
+        android:id="@+id/txtAuth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="10dp"
+        android:text="Author "
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtCat"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+    <TextView
+        android:id="@+id/txtBookName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="156dp"
+        android:layout_marginBottom="16dp"
+        android:text="BookName"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/edtxtAuth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtBookDet"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <Spinner
+        android:id="@+id/spin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+
+        android:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/spin1"
+        app:layout_constraintStart_toEndOf="@+id/txtCat"
+        app:layout_constraintStart_toStartOf="@+id/edtxtAuth"
+        app:layout_constraintTop_toBottomOf="@+id/edtxtAuth" />
+
+    <TextView
+        android:id="@+id/txtCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Category"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/txtAuth" />
+
+    <Button
+        android:id="@+id/btnFin"
+        android:layout_width="372dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="45dp"
+        android:background="#1F77B4"
+        android:text="Finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/txtEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Edition"
+        android:textSize="20sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edtTxtEd"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/edtTxtEd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Choose"
+        app:layout_constraintStart_toStartOf="@+id/No_of_copies"
+        app:layout_constraintTop_toBottomOf="@+id/No_of_copies" />
+
+    <TextView
+        android:id="@+id/txtSelectimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Select image"
+        android:textSize="20sp"
+
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_Choose"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <Button
+        android:id="@+id/btn_Choose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose"
+        app:layout_constraintBottom_toTopOf="@+id/btnFin"
+        app:layout_constraintStart_toStartOf="@+id/edtTxtEd"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtEd" />
+
+    <ImageView
+        android:id="@+id/iconimg"
+        android:layout_width="wrap_content"
+        android:layout_height="158dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnFin"
+        app:layout_constraintDimensionRatio="w,16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Choose"
+        app:layout_constraintVertical_bias="0.445"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ProgressBar
+        android:id="@+id/progress_Bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/txtBookDet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.241" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Topic"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/txtCat" />
+
+    <Spinner
+        android:id="@+id/spin1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/No_of_copies"
+        app:layout_constraintStart_toStartOf="@+id/spin"
+        app:layout_constraintTop_toBottomOf="@+id/spin" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No of copies"
+        android:textSize="20sp"
+        android:inputType="number"
+        app:layout_constraintBaseline_toBaselineOf="@+id/No_of_copies"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <EditText
+        android:id="@+id/No_of_copies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/edtTxtEd"
+        app:layout_constraintStart_toStartOf="@+id/spin1"
+        app:layout_constraintTop_toBottomOf="@+id/spin1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="10dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
