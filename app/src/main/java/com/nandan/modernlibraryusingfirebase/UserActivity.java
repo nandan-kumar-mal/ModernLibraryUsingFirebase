@@ -83,6 +83,7 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             //MainActivity.super.onBackPressed();
+                            onDestroy();
                             finish();
                         }
                     } ).create().show();
@@ -104,10 +105,10 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
-            case R.id.cardAbout:
-                i = new Intent(this, About_us.class);
-                startActivity(i);
-                break;
+//            case R.id.cardAbout:
+//                i = new Intent(this, Aboutus.class);
+//                startActivity(i);
+//                break;
 
         }
 

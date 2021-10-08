@@ -152,7 +152,7 @@ public class Login extends AppCompatActivity {
                             String password_fromdb = snapshot.child("password").getValue(String.class);
                             if (email_fromdb.equals(email_input) && password_fromdb.equals(password_input)) {
                                 startActivity(new Intent(Login.this, MainActivity.class));
-                                Toast.makeText(Login.this, "User Login Successful!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Admin Login Successful!", Toast.LENGTH_SHORT).show();
                             } else {
                                 password.setError("password Wrong");
                             }
