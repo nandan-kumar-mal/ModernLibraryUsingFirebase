@@ -163,8 +163,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:fontFamily="cursive"
-                    android:text="Borrowed Books Records"
-                    android:textSize="26sp" />
+                    android:text="Issued Records"
+                    android:textSize="24sp" />
 
                 <ImageView
                     android:id="@+id/imgview"
