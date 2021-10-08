@@ -34,5 +34,12 @@
         <item>Data Structure and Algorithm</item>
     </string-array>
 
+    <string name = "about_us_1">Madhumita Sinha</string>
+    <string name = "about_us_2">Subhasish Dey</string>
+    <string name = "about_us_3">Nandan Kumar Mal</string>
+    <string name = "about_us_4">Priyogopal Singha</string>
+    <string name = "about_us_6">Technologies like QR and Realtime Database are introduced in our app to improve the user experience. </string>
+    <string name = "about_us_5">Digital Library is an android based Library management Application. It was developed in the year 2021 by our team of four members of the Computer Science Dept. of Gurucharan College.</string>
+
 
 </resources>
