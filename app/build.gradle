@@ -40,6 +40,8 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+    implementation 'io.github.medyo:android-about-page:2.0.0'
+
 
 
     implementation 'com.karumi:dexter:6.2.2'
