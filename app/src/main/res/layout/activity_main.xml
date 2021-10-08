@@ -52,7 +52,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:fontFamily="cursive"
-                    android:text="Transactions"
+                    android:text="Issue/Return"
                     android:textSize="26sp" />
 
                 <ImageView
@@ -141,12 +141,14 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
+
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardAbout"
+            android:id="@+id/cardRec"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:layout_weight="1"
+
             app:cardCornerRadius="12dp"
             app:cardElevation="4dp">
 
@@ -157,22 +159,23 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/imageView4"
+                    android:layout_below="@id/imgview"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
                     android:fontFamily="cursive"
-                    android:text="About Us"
-                    android:textSize="26sp" />
+                    android:text="Issued Records"
+                    android:textSize="24sp" />
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/imgview"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
-                    app:srcCompat="@drawable/about" />
+                    app:srcCompat="@drawable/history" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
+
     </LinearLayout>
 
         <LinearLayout
@@ -184,13 +187,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linear">
-
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardRec"
+                android:id="@+id/cardAbout"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
-
+                android:layout_weight="1"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp">
 
@@ -201,22 +203,23 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/imgview"
+                        android:layout_below="@id/imageView"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp"
                         android:fontFamily="cursive"
-                        android:text="History"
+                        android:text="About Us"
                         android:textSize="26sp" />
 
                     <ImageView
-                        android:id="@+id/imgview"
+                        android:id="@+id/imageView"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="15dp"
-                        app:srcCompat="@drawable/history" />
+                        app:srcCompat="@drawable/about" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
+
 
 
         </LinearLayout>

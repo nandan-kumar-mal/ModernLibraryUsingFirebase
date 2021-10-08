@@ -13,18 +13,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <ImageView
+            android:layout_marginTop="50dp"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/library"
+            />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="130dp"
-            android:fontFamily="serif"
-            android:text="Welcome"
-            android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="40sp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/happy_monkey"
+            android:layout_marginTop="20dp"
+            android:text="Digital Library"
+            android:textSize="30sp"
+
             android:textStyle="bold" />
 
         <LinearLayout
