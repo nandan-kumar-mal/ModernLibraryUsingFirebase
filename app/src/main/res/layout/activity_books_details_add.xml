@@ -27,15 +27,12 @@
         android:id="@+id/txtTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-condensed"
         android:text="Title"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/txtBookName"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBookDet"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtBookName"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <EditText
         android:id="@+id/edtxtAuth"
@@ -52,26 +49,28 @@
         android:id="@+id/txtAuth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="10dp"
         android:text="Author "
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/txtCat"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+        android:textColor="@color/black"
+        app:layout_constraintBaseline_toBaselineOf="@+id/edtxtAuth"
+        app:layout_constraintEnd_toStartOf="@+id/edtxtAuth"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/txtBookName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="156dp"
         android:layout_marginBottom="16dp"
         android:text="BookName"
+        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/edtxtAuth"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.575"
         app:layout_constraintStart_toEndOf="@+id/txtTitle"
         app:layout_constraintTop_toBottomOf="@+id/txtBookDet"
         app:layout_constraintVertical_bias="0.0"
@@ -93,10 +92,14 @@
         android:id="@+id/txtCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="35dp"
         android:layout_marginBottom="16dp"
         android:text="Category"
         android:textSize="20sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/spin"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/txtAuth" />
 
@@ -105,22 +108,25 @@
         android:layout_width="372dp"
         android:layout_height="46dp"
         android:layout_marginEnd="13dp"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="16dp"
         android:background="#1F77B4"
         android:text="Finish"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/txtEdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/black"
         android:text="Edition"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/edtTxtEd"
+        app:layout_constraintEnd_toStartOf="@+id/edtTxtEd"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <EditText
@@ -141,15 +147,18 @@
         android:fontFamily="sans-serif-condensed"
         android:text="Select image"
         android:textSize="20sp"
-
+        android:textColor="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/btn_Choose"
+        app:layout_constraintEnd_toStartOf="@+id/btn_Choose"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <Button
         android:id="@+id/btn_Choose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="107dp"
+        android:layout_height="43dp"
         android:text="Choose"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/btnFin"
         app:layout_constraintStart_toStartOf="@+id/edtTxtEd"
         app:layout_constraintTop_toBottomOf="@+id/edtTxtEd" />
@@ -161,10 +170,10 @@
         app:layout_constraintBottom_toTopOf="@+id/btnFin"
         app:layout_constraintDimensionRatio="w,16:9"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintHorizontal_bias="0.011"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/btn_Choose"
-        app:layout_constraintVertical_bias="0.445"
+        app:layout_constraintVertical_bias="0.342"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ProgressBar
@@ -187,7 +196,10 @@
         android:layout_marginBottom="16dp"
         android:text="Topic"
         android:textSize="20sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toStartOf="@+id/spin1"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toBottomOf="@+id/txtCat" />
 
@@ -196,6 +208,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:scrollIndicators="left"
         app:layout_constraintBottom_toTopOf="@+id/No_of_copies"
         app:layout_constraintStart_toStartOf="@+id/spin"
         app:layout_constraintTop_toBottomOf="@+id/spin" />
@@ -204,16 +217,20 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:text="No of copies"
         android:textSize="20sp"
-        android:inputType="number"
+        android:textColor="@color/black"
         app:layout_constraintBaseline_toBaselineOf="@+id/No_of_copies"
+        app:layout_constraintEnd_toStartOf="@+id/No_of_copies"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <EditText
         android:id="@+id/No_of_copies"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
         android:layout_marginBottom="16dp"
         android:ems="10"
         android:inputType="number"
@@ -227,6 +244,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_begin="10dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="left"
+        tools:layout_editor_absoluteX="394dp"
+        tools:layout_editor_absoluteY="53dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

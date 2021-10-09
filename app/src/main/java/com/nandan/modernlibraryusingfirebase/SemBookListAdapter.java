@@ -2,7 +2,6 @@ package com.nandan.modernlibraryusingfirebase;
 
 import android.content.Context;
 import android.content.Intent;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +59,7 @@ public class SemBookListAdapter extends RecyclerView.Adapter<SemBookListAdapter.
         View view = inflater.inflate(R.layout.singlerow, parent, false );
         return new ViewHolder(view);
     }
+
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
